@@ -1,140 +1,151 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><h4>STIMU Management System</h4></a>
-            </div>
-            <!-- /.navbar-header -->
+	<!-- Header
+	============================================= -->
+	<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+		
+		
+		<!-- Top Bar
+		============================================= -->
+		<div id="top-bar">
 
-            <ul class="nav navbar-top-links navbar-right">
-                
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i><span>{{ Auth::user()->name }}</span> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{ url('dashboarduserprofile') }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        
-                        <li class="divider"></li>
-                        <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+			<div class="container clearfix">
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
+				<div class="col_half nobottommargin">
+
+					<!-- Top Links
+					============================================= -->
+					<div class="top-links">
+						
+						<ul>
+							<!-- <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+						<li><a href="#">Logout <i class="icon-signout"></i></a></li>
+					</ul> -->
+					
+					
+					@if (Auth::guest())
+					<li><a href="{{ url('/auth/login') }}">Login</a>
+						<div class="top-link-section">
+							
+                                      @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
                                     </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+                                </div>
+                                @endif
+                                         <form method="POST" action="{{ url('/auth/login') }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<div class="input-group" id="top-login-username">
+									<span class="input-group-addon"><i class="icon-user"></i></span>
+									 <input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
+								</div>
+								<div class="input-group" id="top-login-password">
+									<span class="input-group-addon"><i class="icon-key"></i></span>
+								              <input type="password" class="form-control" placeholder="password" name="password">
+								</div>
+								<label class="checkbox">
+									<input type="checkbox" value="remember-me"> Remember me
+								</label>
+								
+							</br>
+							<button class="btn btn-danger btn-block" type="submit">Sign in</button>
+						</form>
+
+						<a href="{{ url('/auth/register') }}"><button class="btn btn-danger btn-block" type="submit">Register</button></a>
+					</div>
+				</li>
+				@else
+				@if(Auth::user()->photourl!="")
+				<!-- <li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ substr(Auth::user()->name,0, 5) }}</span></a> -->
+				<li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ Auth::user()->name }}</span></a>
+					@else
+					<li><a href=""><i class="icon-user"></i> <span>{{ Auth::user()->name }}</span></a>
+						@endif
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="{{ route("profiles.edit", Auth::user()->id) }}"><i class="icon-user"></i> <span>My Profile</span></a></li>
+							<li><a href="{{ url('/auth/logout') }}">Logout <i class="icon-signout"></i></a></li>
+						</ul>
+					</li>
+					@endif
+				</ul>
+			</div><!-- .top-links end -->
+
+		</div>
+
+		<div class="col_half fright col_last nobottommargin">
+
+					<!-- Top Social
+					============================================= -->
+					<div id="top-social">
+						<ul>
+							<li><a href="https://www.facebook.com/mymagicalmyanmar" class="si-facebook" target="blank"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
+							<li><a href="https://twitter.com/magicalmyanmar" class="si-twitter" target="blank"><span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span></a></li>
+							<li><a href="https://www.instagram.com/my_magical_myanmar" class="si-instagram" target="blank"><span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span></a></li>
+							<li><a href="tel:+951554776" class="si-call"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+951554776</span></a></li>
+							<li><a href="mailto:info@logimediamyanmar.com" class="si-email3" target="blank"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">info@logimediamyanmar.com</span></a></li>
+							
+							
+						</ul>
+					</div><!-- #top-social end -->
+
+				</div>
+
+			</div>
+
+		</div><!-- #top-bar end -->
+		
+		
+		
+
+		<div id="header-wrap" >
+
+			<div class="container clearfix">
+
+				<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<a href="/" class="standard-logo" data-dark-logo="<?php echo url(); ?>/images/logo1.png"><img src="<?php echo url(); ?>/images/logo3.png" alt="Canvas Logo"></a>
+						<a href="/" class="retina-logo" data-dark-logo="<?php echo url(); ?>/images/logo2.png"><img src="<?php echo url(); ?>/images/logo@2x.png" alt="mymagicalmyanmar"></a>
+					</div><!-- #logo end -->
+
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu" class="dark">
+
+						<ul>
+							<li><a href="/"><div>Home</div></a>
+								
+							</li>
+							<li><a href="<?php echo url(); ?>/magazine"><div>Magazine</div></a>
+								
+							</li>
+							<!--- <li><a href="<?php echo url(); ?>/booking"><div>Booking</div></a>
+								
+							</li> --->
+							<li><a href="<?php echo url(); ?>/joinus"><div>Join Us</div></a>
+								
+							</li>
+						</ul>
+						
+
+						<!-- Top Search
+						============================================= -->
+						<div id="top-search">
+							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+							<form action="search.html" method="get">
+								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+							</form>
+						</div><!-- #top-search end -->
+
+					</nav><!-- #primary-menu end -->
+
+				</div>
+
+			</div>
+
+		</header><!-- #header end -->

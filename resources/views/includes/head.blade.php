@@ -1,27 +1,123 @@
-<html lang="en">
-
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
+  <meta charset="utf-8">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Aung Thein Naing">
+  <title>My Magical Myanmar| BETA</title>
+<meta property="fb:pages" content="269960796513112" />
+  <meta name="description" content="My Magical Myanmar - Myanmar’s leading Travel Magazine in Hotels, Airlines, Tourism and Travel Trade News">
+  <meta name="my magical myanmar" content="My Magical Myanmar">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>STIMU Management System</title>
+ 
+<link rel="Stylesheet" href="http://www.jgilmore.com/cart/scartlib.aspx?type=css" />
+ 
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo url(); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="<?php echo url(); ?>/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/swiper.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/dark.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/font-icons.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/magnific-popup.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo url(); ?>/css/responsive.css" type="text/css" />
 
-    <!-- MetisMenu CSS -->
-    <link href="<?php echo url(); ?>/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="<?php echo url(); ?>/public/images/mymagicalmyanmar-web-favicon.png" type="image/png" sizes="16x16">
 
-    <!-- Custom CSS -->
-    <link href="<?php echo url(); ?>/dist/css/sb-admin-2.css" rel="stylesheet">
+  <!--  notification message -->
+ 
 
-    <!-- Morris Charts CSS -->
-    <link href="<?php echo url(); ?>/vendor/morrisjs/morris.css" rel="stylesheet">
+<script src="<?php echo url(); ?>/js/jquery-2.1.3.js"></script> 
 
-    <!-- Custom Fonts -->
-    <link href="<?php echo url(); ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+   <script type="text/javascript">
+  function replyon(fid){
+   
+                    var elem = document.getElementById(fid);
+                    elem.style.display = 'block';
+                    
+             
+          }
+  </script>
+   <script type="text/javascript">
+  function addbook(bprice, vnum, inum, id){
+
+     var getUrl = window.location;
+    var baseUrl = getUrl .protocol + "//" + getUrl.host + "/";
+
+
+              $.ajax({
+                type:'POST',
+                url: baseUrl + 'makeorder',
+                data: {
+                  "_token": "{{ csrf_token() }}",
+                  "id": id
+                },
+                datatype: "json",
+                success:function(data){
+
+                    if(data.msg == "success")
+                    {
+                     var e1 = document.getElementById('totalbox').innerHTML;
+                   
+                    if (e1 == "")e1 = 0;
+                    document.getElementById('totalbox').innerHTML = parseInt(e1) + bprice;
+                    document.getElementById('bookinfo').innerHTML  =  document.getElementById('bookinfo').innerHTML + '<br>' + 'vol' + vnum + ':' + inum + '  =   ' + bprice + 'ks';
+                     // document.getElementById('bookids').innerHTML = document.getElementById('bookids').innerHTML + id + ";";
+                    }
+                    else
+                    {
+                        var elem = document.getElementById('nlabel');
+                        var elem1 = document.getElementById('btnlogin');
+                        elem.style.display = 'block';
+                            elem1.style.display = 'block';
+                    
+                    }
+                }
+              });
+   
+                   
+                    
+             
+          }
+
+
+ 
+         
+  </script>
+
+
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/d5232c0e03f30eb1d83964fa9/1246f37ad532024ef12d3f64d.js");</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49247955-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21634342863/mmm_home', [970, 90], 'div-gpt-ad-1506677959671-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>

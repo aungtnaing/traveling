@@ -41,7 +41,7 @@ class ProfilesController extends Controller {
 
 		$user = User::find($request->user()->id);
 
-		return view('users.userprofileupdate')->with('user',$user);
+		return view('dashboard.users.userprofileupdate')->with('user',$user);
 	}
 
 	/**
@@ -122,7 +122,7 @@ public function store(Request $request)
 		{
 			$user = User::find($id);
 
-			return view('users.userrole')->with('user',$user);
+			return view('dashboard.users.userrole')->with('user',$user);
 		}
 		else
 		{
@@ -223,9 +223,11 @@ public function store(Request $request)
 		}
 	}
 	$user->name = $request->input("name");
+	$user->mname = $request->input("mname");
 	
 	$user->address = $request->input("address");
 	$user->ph1 = $request->input("ph1");
+	$user->ph2 = $request->input("ph2");
 	$user->email = $request->input("email");
 	if($request->input("password")!="")
 	{
@@ -235,7 +237,10 @@ public function store(Request $request)
 	$user->bio =  $request->input("bio");
 	$user->save();
 
-	return redirect()->action('HomeController@index');
+	if($id==0)
+		{return redirect()->action('DashboardController@index');}
+	else
+		{return redirect()->action('HomeController@index');}
 	
 }
 

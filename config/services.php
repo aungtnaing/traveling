@@ -34,4 +34,10 @@ return [
 		'secret' => '',
 	],
 
+	'facebook' => [
+    'client_id' => '146821059241551',
+    'client_secret' => '890cc9ef87fa669bc4c1b97e7ebeadea',
+    'redirect' => 'http://mymagicalmyanmar.com/login/callback/facebook',
+],
+
 ];

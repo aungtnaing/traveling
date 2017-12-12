@@ -1,35 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	@include('includes.head')  
 </head>
-<body>
-	<div id="wrapper">
+<body class="stretched">
+
+	<div id="wrapper" class="clearfix">
+
+
+
 		@include('includes.header') 
-        <div id="page-wrapper">
 
 		@yield('content')
 
-		</div>
+		@include('includes.footer') 
+
+		
 
 	</div>
-	<script src="<?php echo url(); ?>/assets/js/excanvas.min.js"></script> 
+	
 
+	<div id="gotoTop" class="icon-angle-up"></div>
 
-	<script src="<?php echo url(); ?>/vendor/jquery/jquery.min.js"></script>
+	<!-- External JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="<?php echo url(); ?>/js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo url(); ?>/js/plugins.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo url(); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="<?php echo url(); ?>/js/functions.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo url(); ?>/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo url(); ?>/vendor/raphael/raphael.min.js"></script>
-    <script src="<?php echo url(); ?>/vendor/morrisjs/morris.min.js"></script>
-    <script src="<?php echo url(); ?>/data/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo url(); ?>/dist/js/sb-admin-2.js"></script>
 </body>
 </html>

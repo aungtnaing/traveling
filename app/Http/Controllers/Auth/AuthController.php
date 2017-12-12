@@ -5,6 +5,12 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use App\Category;
+
+use View;
+use Config;
+
+
 class AuthController extends Controller {
 
 	/*
@@ -29,10 +35,18 @@ class AuthController extends Controller {
 	 */
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
+		
+		 
+   		$categorys = Category::orderBy('id', 'desc')->paginate(10);
+    	View::share('categorys', $categorys);
+   
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
+		
 		$this->middleware('guest', ['except' => 'getLogout']);
+
+		
 	}
 
 }
