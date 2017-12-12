@@ -2145,7 +2145,7 @@ public function snapshotsmn($postname)
 			{
 
 				$strfbody = strip_tags($this->strCutting($recentpost->description, ".", 500));
-				$strfbody = preg_replace("/&nbsp;"," ",$strfbody);
+				$strfbody = preg_replace("/\s|&nbsp;/"," ",$strfbody);
 
 
 
