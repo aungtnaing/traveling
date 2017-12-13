@@ -2058,7 +2058,6 @@ public function snapshotsmn($postname)
 
 		$post->name = $request->input("name");
 		$post->groupname = $request->input("groupname");
-		$post->authorname = $request->input("authorname");
 
 		$post->subtitle = $request->input("subtitle");
 		$post->caption1 = $request->input("caption1");
