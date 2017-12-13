@@ -18,6 +18,7 @@
 		use App\Orderstemp;
 		use App\Authors;
 		use App\Issues;
+		use App\Whatnews;
 		
 
 		Route::get('/', 'WelcomeController@index');
@@ -39,12 +40,33 @@ Route::get('/login/callback/{provider?}',[
 
 		Route::get('homemyanmar', 'LanguageController@homemyanmar');
 
-Route::get('listing', function() {
+Route::get('freelisting', function() {
 
 			$categorys = Category::All();
 			
 			return view('pages.whatnews')
 			->with('categorys', $categorys);
+			
+			
+		});
+
+Route::get('travelbiz', function() {
+
+			$categorys = Category::All();
+			
+
+			$whatnews = Whatnews::where('active', 1)
+						->orderBy('id','DESC')
+			->paginate(1);
+
+			$whatnewslist = Whatnews::where('active', 0)
+						->orderBy('id','DESC')
+						->get();
+
+			return view('pages.travelbiz')
+			->with('categorys', $categorys)
+			->with('whatnews', $whatnews)
+			->with('whatnewslist', $whatnewslist);
 			
 			
 		});

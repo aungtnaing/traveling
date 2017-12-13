@@ -125,6 +125,8 @@ class WhatnewsController extends Controller {
 	
 		$whatnew->address = $request->input("address");
 		$whatnew->postalcode = $request->input("postalcode");
+				$whatnew->region = $request->input("region");
+
 		$whatnew->city = $request->input("city");
 		$whatnew->township = $request->input("township");
 		$whatnew->websiteurl = $request->input("websiteurl");
@@ -135,7 +137,7 @@ class WhatnewsController extends Controller {
 		$whatnew->email = $request->input("email");
 		$whatnew->phone = $request->input("phone");
 		$whatnew->message = $request->input("message");
-
+		$whatnew->active = 0;
 		
 		$whatnew->save();
 		
@@ -166,7 +168,10 @@ class WhatnewsController extends Controller {
 	public function edit($id)
 	{
 		//
-		
+			
+		$whatnew = Whatnews::find($id);
+	
+		return view('dashboard.whatnews.whatnewsedit')->with('whatnew', $whatnew);
 	
 	}
 
@@ -179,7 +184,86 @@ class WhatnewsController extends Controller {
 	public function update($id,Request $request)
 	{
 		//
+		$this->validate($request,[
+		'businessname' => 'required|max:255',
+			'businessemail' => 'required|max:255',
+			'businessphone' => 'required|max:255',
+			'name' => 'required|max:255',
+			'email' => 'required|max:255',
+			'phone' => 'required|max:255',
+			]);
+
+
+		$whatnew = Whatnews::find($id);
+
+			$imagePath = public_path() . '/images/whatnews/';
+		$directory = $id;
+
+		$input = $request->all();
+		$destinationPath = $imagePath . $directory . '/photos';
 		
+		$photourl1 = $whatnew->photourl1;
+	
+		
+		if(Input::file('photourl1')!="")
+		{
+	
+			if(Input::file('photourl1')->isValid())
+			{
+
+				
+				if($photourl1!="")
+				{
+					if(file_exists(public_path().$photourl1))
+					{
+						
+				
+						unlink(public_path() . $photourl1);
+					}
+				}
+
+
+
+				$name =  time()  . '-cover' . '.' . $input['photourl1']->getClientOriginalExtension();
+				Input::file('photourl1')->move($destinationPath, $name); // uploading file to given path
+				$photourl1 = "/images/whatnews/" . $directory . '/photos/' .  $name;
+			
+			}
+
+		}
+
+	
+$whatnew->businessname = $request->input("businessname");
+		$whatnew->businessemail = $request->input("businessemail");
+		$whatnew->businessphone = $request->input("businessphone");
+	
+		$whatnew->address = $request->input("address");
+		$whatnew->postalcode = $request->input("postalcode");
+				$whatnew->region = $request->input("region");
+
+		$whatnew->city = $request->input("city");
+		$whatnew->township = $request->input("township");
+		$whatnew->websiteurl = $request->input("websiteurl");
+		$whatnew->category = $request->input("category");
+		$whatnew->photourl1 = $photourl1;
+
+		$whatnew->name = $request->input("name");
+		$whatnew->email = $request->input("email");
+		$whatnew->phone = $request->input("phone");
+		$whatnew->message = $request->input("message");
+$whatnew->active = 0;
+		if (Input::get('active') === ""){$whatnew->active = 1;}
+
+	
+		
+		
+		$whatnew->save();
+		
+		
+		
+	
+		
+		return redirect()->route("whatnew.index");
 	
 	}
 

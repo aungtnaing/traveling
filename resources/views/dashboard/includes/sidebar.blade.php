@@ -11,7 +11,7 @@
      <li><a href="{{ url('/advertises') }}"><i class="icon icon-th"></i> <span>AD Lists</span></a></li>
       <li><a href="{{ url('/subscribes') }}"><i class="icon icon-th"></i> <span>Subscribe price Lists</span></a></li>
     <li><a href="{{ url('/picturesques') }}"><i class="icon icon-th"></i> <span>picturesques lists</span></a></li>
-   <li><a href="{{ url('/whatnew') }}"><i class="icon icon-th"></i> <span>Whatnews Lists</span></a></li>
+   <li><a href="{{ url('/whatnew') }}"><i class="icon icon-th"></i> <span>freelisting</span></a></li>
     <li><a href="{{ url('/votes') }}"><i class="icon icon-th"></i> <span>Votes Lists</span></a></li>
         <li><a href="{{ url('/authors') }}"><i class="icon icon-th"></i> <span>Author Lists</span></a></li>
         <li><a href="{{ url('/issues') }}"><i class="icon icon-th"></i> <span>Picturesque Issue Lists</span></a></li>
