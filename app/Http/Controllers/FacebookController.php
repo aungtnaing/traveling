@@ -73,7 +73,17 @@ class FacebookController extends Controller {
 
 
           $user->name = $fbuser->getName();
-          $user->email = $fbuser->getEmail();
+          if($fbuser->getEmail() == "")
+          {
+                        $user->email = $fbuser->id . "@mymagical.com";
+
+          }
+          else
+          {
+                      $user->email = $fbuser->getEmail();
+
+          }
+
 
 
 
