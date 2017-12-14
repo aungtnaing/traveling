@@ -61,12 +61,13 @@ Route::get('travelbiz', function() {
 
 			$whatnewslist = Whatnews::where('active', 0)
 						->orderBy('id','DESC')
-						->get();
+						->paginate(10);
 
 			return view('pages.travelbiz')
 			->with('categorys', $categorys)
 			->with('whatnews', $whatnews)
-			->with('whatnewslist', $whatnewslist);
+			->with('whatnewslists', $whatnewslist)
+			->with('categorys', $categorys);
 			
 			
 		});

@@ -20,56 +20,56 @@
 					<div class="top-links">
 
 						<ul>
-									
-					@if (Auth::guest())
-					<li><a href="{{ url('/auth/login') }}">Login</a>
-						<div class="top-link-section">
-							
-                                      @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
-                                         <form method="POST" action="{{ url('/auth/login') }}">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<div class="input-group" id="top-login-username">
-									<span class="input-group-addon"><i class="icon-user"></i></span>
-									 <input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
-								</div>
-								<div class="input-group" id="top-login-password">
-									<span class="input-group-addon"><i class="icon-key"></i></span>
-								              <input type="password" class="form-control" placeholder="password" name="password">
-								</div>
-								<label class="checkbox">
-									<input type="checkbox" value="remember-me"> Remember me
-								</label>
-								
-							</br>
-							<button class="btn btn-danger btn-block" type="submit">Sign in</button>
-						</form>
 
-						<a href="{{ url('/auth/register') }}"><button class="btn btn-danger btn-block" type="submit">Register</button></a>
-					</div>
-				</li>
-				@else
-				@if(Auth::user()->photourl!="")
-				<!-- <li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ substr(Auth::user()->name,0, 5) }}</span></a> -->
-				<li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ Auth::user()->name }}</span></a>
-					@else
-					<li><a href=""><i class="icon-user"></i> <span>{{ Auth::user()->name }}</span></a>
-						@endif
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="{{ route("profiles.edit", Auth::user()->id) }}"><i class="icon-user"></i> <span>My Profile</span></a></li>
-							<li><a href="{{ url('/auth/logout') }}">Logout <i class="icon-signout"></i></a></li>
+							@if (Auth::guest())
+							<li><a href="{{ url('/auth/login') }}">Login</a>
+								<div class="top-link-section">
+
+									@if (count($errors) > 0)
+									<div class="alert alert-danger">
+										<strong>Whoops!</strong> There were some problems with your input.<br><br>
+										<ul>
+											@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+									@endif
+									<form method="POST" action="{{ url('/auth/login') }}">
+										<input type="hidden" name="_token" value="{{ csrf_token() }}">
+										<div class="input-group" id="top-login-username">
+											<span class="input-group-addon"><i class="icon-user"></i></span>
+											<input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
+										</div>
+										<div class="input-group" id="top-login-password">
+											<span class="input-group-addon"><i class="icon-key"></i></span>
+											<input type="password" class="form-control" placeholder="password" name="password">
+										</div>
+										<label class="checkbox">
+											<input type="checkbox" value="remember-me"> Remember me
+										</label>
+
+									</br>
+									<button class="btn btn-danger btn-block" type="submit">Sign in</button>
+								</form>
+
+								<a href="{{ url('/auth/register') }}"><button class="btn btn-danger btn-block" type="submit">Register</button></a>
+							</div>
+						</li>
+						@else
+						@if(Auth::user()->photourl!="")
+						<!-- <li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ substr(Auth::user()->name,0, 5) }}</span></a> -->
+						<li><a href=""><img src="{{ Auth::user()->photourl }}" width="25" height="25" class="img-circle"> <span>{{ Auth::user()->name }}</span></a>
+							@else
+							<li><a href=""><i class="icon-user"></i> <span>{{ Auth::user()->name }}</span></a>
+								@endif
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><a href="{{ route("profiles.edit", Auth::user()->id) }}"><i class="icon-user"></i> <span>My Profile</span></a></li>
+									<li><a href="{{ url('/auth/logout') }}">Logout <i class="icon-signout"></i></a></li>
+								</ul>
+							</li>
+							@endif
 						</ul>
-					</li>
-					@endif
-				</ul>
 					</ul>
 				</div><!-- .top-links end -->
 
@@ -120,7 +120,7 @@
 					<nav id="primary-menu" class="dark">
 
 						<ul>
-								<li><a href="/"><div>Home</div></a>
+							<li><a href="/"><div>Home</div></a>
 								
 							</li>
 							<li><a href="<?php echo url(); ?>/magazine"><div>Magazine</div></a>
@@ -194,31 +194,98 @@
 							@endforeach
 							{!! $whatnews->render() !!}
 
-						
-						
-						<div class="row">
-							<div class="col-half nobottommargin">
 
 
-							@foreach($whatnewslist as $whatnewslist)
+							<div class="row">
+								<div class="col-half nobottommargin">
 
-								<div class="thumbnail">
 
-									<div>
-										<h5><a href="{{ $whatnewslist->websiteurl }}">{{ $whatnewslist->businessname }}</a></h5>
-										<ul class="entry-meta clearfix">
-											<li><a href="{{ $whatnewslist->websiteurl }}"><i class="icon-globe"></i>{{ $whatnewslist->websiteurl }}</a></li>
-											<li><a href="{{ $whatnewslist->businessphone }}"><i class="icon-phone"></i> 09888888888</a></li>
-											<li><a href="{{ $whatnewslist->businessemail }}"><i class="icon-mail"></i>asadsad@gmail.cm</a></li>
-											<li><i class="icon-home"></i>{{ $whatnewslist->address }}</li>
+									@foreach($whatnewslists as $whatnewslist)
 
-										</ul>
+									<div class="thumbnail">
+
+										<div>
+											<h5><a href="{{ $whatnewslist->websiteurl }}">{{ $whatnewslist->businessname }}</a></h5>
+											<ul class="entry-meta clearfix">
+												<li><a href="{{ $whatnewslist->websiteurl }}"><i class="icon-globe"></i>{{ $whatnewslist->websiteurl }}</a></li>
+												<li><a href="{{ $whatnewslist->businessphone }}"><i class="icon-phone"></i> 09888888888</a></li>
+												<li><a href="{{ $whatnewslist->businessemail }}"><i class="icon-mail"></i>asadsad@gmail.cm</a></li>
+												<li><i class="icon-home"></i>{{ $whatnewslist->address }}</li>
+
+											</ul>
+
+										</div>
 
 									</div>
 
+									@endforeach
+
+							{!! $whatnewslists->render() !!}
+
+
+
+
+
+
+
+
+
+
 								</div>
 
-								@endforeach
+
+							</div>
+
+
+
+
+						</div>
+
+						<div class="sidebar nobottommargin col_last clearfix">
+							<div class="sidebar-widgets-wrap">
+
+
+
+
+								<div class="widget clearfix">
+									<img class="aligncenter" src="<?php echo url(); ?>/images/magazine/ad.png" alt="">
+								</div>	
+
+
+
+								<div class="widget widget_links clearfix">
+
+									<h4>Categories</h4>
+									<div class="col_half nobottommargin">
+										<ul>
+											@for($i = 0; $i < count($categorys); $i++)
+											@if($i < 6)
+											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+											@endif
+											@endfor
+
+
+										</ul>
+									</div>
+									<div class="col_half nobottommargin col_last">
+										<ul>
+
+											@for($i = 6; $i < count($categorys); $i++)
+
+											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+
+											@endfor
+
+
+										</ul>
+									</div>
+
+								</div>	
+
+
+
+
+
 
 
 
@@ -233,56 +300,21 @@
 							</div>
 
 
-						</div>
-						
-						
-
-
-					</div>
-
-					<div class="sidebar nobottommargin col_last clearfix">
-						<div class="sidebar-widgets-wrap">
-
-							
-
-
-							<div class="widget clearfix">
-								<img class="aligncenter" src="images/ads2.jpg" alt="">
-							</div>		
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 						</div>
-
-
-
-						
-
 					</div>
+
+
+
+
+
 				</div>
 
-
-
-				
-				
 			</div>
 
-		</div>
-
-	</section><!-- #content end -->
+		</section><!-- #content end -->
 
 	<!-- Footer
 	============================================= -->

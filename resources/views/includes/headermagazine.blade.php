@@ -129,9 +129,7 @@
 							<li class="current"><a href="<?php echo url(); ?>/magazine"><div>Magazine</div></a>
 								
 							</li>
-							<!--- <li><a href="<?php echo url(); ?>/booking"><div>Booking</div></a>
-								
-							</li> --->
+							
 							<li><a href="<?php echo url(); ?>/joinus"><div>Join Us</div></a>
 								
 							</li>
