@@ -33,15 +33,24 @@
 		{
 
 
+			$post = Posts::find($postid);
+			
 
+			// $postname = str_replace(' ', '%', $post->name);
+			// $catname = strtolower(str_replace(' ', '', $post->category->name));
+		
 
-			// $post = Posts::find($postid);
+			// $desc = "http://www.mymagicalmyanmar.com/" . $catname . "/" . $postname;
 
+			// $desc = $post->name;
+			// $desc = "<a href=mymagicalmyanmar.com/postdetails/". $post->id . "></a>";
+			$desc = $post->name . "    ";
+			$desc.= "mymagicalmyanmar.com/postdetails/". $post->id;
 
-			// $uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
-			// Twitter::postTweet(['status' => $post->name, 'media_ids' => $uploaded_media->media_id_string]);
+			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			Twitter::postTweet(['status' => $desc, 'media_ids' => $uploaded_media->media_id_string]);
 
-			// return back()->withInput();
+			return back()->withInput();
 
 
 		});
@@ -52,13 +61,14 @@
 
 
 
-			// $post = Posts::find($postid);
+			$post = Posts::find($postid);
 
+			$desc = $post->mname . "    ";
+			$desc.= "mymagicalmyanmar.com/postdetails/". $post->id;
+			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			Twitter::postTweet(['status' => $desc, 'media_ids' => $uploaded_media->media_id_string]);
 
-			// $uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
-			// Twitter::postTweet(['status' => $post->mname, 'media_ids' => $uploaded_media->media_id_string]);
-
-			// return back()->withInput();
+			return back()->withInput();
 
 
 		});
@@ -84,6 +94,14 @@
 			
 			
 		});
+
+		// 	Route::get('test', function() {
+
+			
+		// 	return view('pages.test');
+			
+			
+		// });
 
 		Route::get('travelbiz', function() {
 
