@@ -72,7 +72,7 @@ foreach($postdetail->comments as $cmt)
 
 
 									
-									<a href="https://twitter.com/intent/tweet?text=Hello%20world"
+									<a href="{{ url('/tweet', $postdetail->id) }}"
   data-size="large"" class="social-icon si-borderless si-twitter">
 										<i class="icon-twitter"></i>
 										<i class="icon-twitter"></i>
