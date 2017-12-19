@@ -35,13 +35,13 @@
 
 
 
-			$post = Posts::find($postid);
+			// $post = Posts::find($postid);
 
 
-			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
-			Twitter::postTweet(['status' => $post->name, 'media_ids' => $uploaded_media->media_id_string]);
+			// $uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			// Twitter::postTweet(['status' => $post->name, 'media_ids' => $uploaded_media->media_id_string]);
 
-			return back()->withInput();
+			// return back()->withInput();
 
 
 		});
@@ -52,13 +52,13 @@
 
 
 
-			$post = Posts::find($postid);
+			// $post = Posts::find($postid);
 
 
-			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
-			Twitter::postTweet(['status' => $post->mname, 'media_ids' => $uploaded_media->media_id_string]);
+			// $uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			// Twitter::postTweet(['status' => $post->mname, 'media_ids' => $uploaded_media->media_id_string]);
 
-			return back()->withInput();
+			// return back()->withInput();
 
 
 		});
