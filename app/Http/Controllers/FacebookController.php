@@ -57,7 +57,7 @@ class FacebookController extends Controller {
 
              // dd($checkUser);
        			Auth::login($checkUser);
-       			return redirect('home');
+      return back()->withInput();
             // $credentials = array(
             //   'email' => $checkUser->email,
             //   'password' => $checkUser->password
@@ -91,7 +91,7 @@ class FacebookController extends Controller {
 
             $user->save();   
             Auth::login($user);
-            return redirect('home');
+      return back()->withInput();
             // $credentials = array(
             //   'email' => $checkUser->email,
             //   'password' => $checkUser->password

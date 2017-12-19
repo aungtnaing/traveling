@@ -27,20 +27,55 @@
 		Route::get('mn', 'LanguageController@changemn');
 		Route::get('en', 'LanguageController@changeen');
 
-	
-Route::get('/login/{provider?}',[
-    'uses' => 'FacebookController@getSocialAuth',
-    'as'   => 'auth.getSocialAuth'
-]);
+		
 
-Route::get('/login/callback/{provider?}',[
-    'uses' => 'FacebookController@getSocialAuthCallback',
-    'as'   => 'auth.getSocialAuthCallback'
-]);	
+		Route::get('/tweet/{postid}', function($postid)
+		{
+
+
+
+
+			$post = Posts::find($postid);
+
+
+			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			Twitter::postTweet(['status' => $post->name, 'media_ids' => $uploaded_media->media_id_string]);
+
+			return back()->withInput();
+
+
+		});
+
+		Route::get('/tweetmn/{postid}', function($postid)
+		{
+
+
+
+
+			$post = Posts::find($postid);
+
+
+			$uploaded_media = Twitter::uploadMedia(['media' => File::get(public_path($post->photourl2))]);
+			Twitter::postTweet(['status' => $post->mname, 'media_ids' => $uploaded_media->media_id_string]);
+
+			return back()->withInput();
+
+
+		});
+		
+		Route::get('/login/{provider?}',[
+			'uses' => 'FacebookController@getSocialAuth',
+			'as'   => 'auth.getSocialAuth'
+			]);
+
+		Route::get('/login/callback/{provider?}',[
+			'uses' => 'FacebookController@getSocialAuthCallback',
+			'as'   => 'auth.getSocialAuthCallback'
+			]);	
 
 		Route::get('homemyanmar', 'LanguageController@homemyanmar');
 
-Route::get('freelisting', function() {
+		Route::get('freelisting', function() {
 
 			$categorys = Category::All();
 			
@@ -50,18 +85,18 @@ Route::get('freelisting', function() {
 			
 		});
 
-Route::get('travelbiz', function() {
+		Route::get('travelbiz', function() {
 
 			$categorys = Category::All();
 			
 
 			$whatnews = Whatnews::where('active', 1)
-						->orderBy('id','DESC')
+			->orderBy('id','DESC')
 			->paginate(1);
 
 			$whatnewslist = Whatnews::where('active', 0)
-						->orderBy('id','DESC')
-						->paginate(10);
+			->orderBy('id','DESC')
+			->paginate(10);
 
 			return view('pages.travelbiz')
 			->with('categorys', $categorys)
@@ -246,8 +281,8 @@ Route::get('travelbiz', function() {
 			
 		}]);
 
-           
-Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', function ($categoryid) {
+		
+		Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', function ($categoryid) {
 			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
@@ -294,7 +329,7 @@ Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', functio
 			// $exposures = DB::table('posts')
    //                  ->groupBy('groupname')
    //                  ->get();
-		
+			
 
 			$picturesques = Posts::where('active',1)
 			->where('categoryid', 6)
@@ -373,14 +408,14 @@ Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', functio
 			$book = Books::find(Books::max('id'));
 
 
- $thetalks = Posts::where('active',1)
+			$thetalks = Posts::where('active',1)
 			->where('categoryid', 14)
 			->where('name','!=','')
 			->orderBy('id','DESC')
 			->take(2)
 			->get();
 
-		
+			
 			return view('pages.magazines')
 			->with('categorys', $categorys)
 			->with('travelsectorposts', $travelsectorposts)
@@ -396,8 +431,8 @@ Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', functio
 			->with('popularposts', $popularposts)
 			->with('recentposts', $recentposts)
 			->with('book', $book)
-            ->with('thetalks', $thetalks)
-            ->with('issue', $issue);
+			->with('thetalks', $thetalks)
+			->with('issue', $issue);
 			
 			
 			
@@ -456,7 +491,7 @@ Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', functio
 
 		Route::get('travelsectorupdates', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 1)
@@ -478,7 +513,7 @@ Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', functio
 			
 		});
 
-Route::get('mn/exposure', function() {
+		Route::get('mn/exposure', function() {
 
 			$categorys = Category::All();
 
@@ -503,9 +538,9 @@ Route::get('mn/exposure', function() {
 		});
 
 
-Route::get('exposure', function() {
+		Route::get('exposure', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 5)
@@ -528,9 +563,9 @@ Route::get('exposure', function() {
 		});
 
 
-Route::get('snapshots', function() {
+		Route::get('snapshots', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 10)
@@ -552,9 +587,9 @@ Route::get('snapshots', function() {
 			
 		});
 
-Route::get('departures', function() {
+		Route::get('departures', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 9)
@@ -575,7 +610,7 @@ Route::get('departures', function() {
 			->with('latestposts', $recentposts);
 			
 		});
-Route::get('mn/departures', function() {
+		Route::get('mn/departures', function() {
 
 			$categorys = Category::All();
 
@@ -600,9 +635,9 @@ Route::get('mn/departures', function() {
 		});
 
 
-Route::get('checkin', function() {
+		Route::get('checkin', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 11)
@@ -623,7 +658,7 @@ Route::get('checkin', function() {
 			->with('latestposts', $recentposts);
 			
 		});
-Route::get('mn/checkin', function() {
+		Route::get('mn/checkin', function() {
 
 			$categorys = Category::All();
 
@@ -647,9 +682,9 @@ Route::get('mn/checkin', function() {
 			
 		});
 
-Route::get('underground', function() {
+		Route::get('underground', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 13)
@@ -670,7 +705,7 @@ Route::get('underground', function() {
 			->with('latestposts', $recentposts);
 			
 		});
-Route::get('mn/underground', function() {
+		Route::get('mn/underground', function() {
 
 			$categorys = Category::All();
 
@@ -695,9 +730,9 @@ Route::get('mn/underground', function() {
 		});
 
 
-Route::get('standout', function() {
+		Route::get('standout', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 12)
@@ -719,7 +754,7 @@ Route::get('standout', function() {
 			
 		});
 
-Route::get('mn/standout', function() {
+		Route::get('mn/standout', function() {
 
 			$categorys = Category::All();
 
@@ -744,9 +779,9 @@ Route::get('mn/standout', function() {
 		});
 
 
-Route::get('arrivals', function() {
+		Route::get('arrivals', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 7)
@@ -768,7 +803,7 @@ Route::get('arrivals', function() {
 			
 		});
 
-Route::get('mn/arrivals', function() {
+		Route::get('mn/arrivals', function() {
 
 			$categorys = Category::All();
 
@@ -792,9 +827,9 @@ Route::get('mn/arrivals', function() {
 			
 		});
 
-Route::get('infocus', function() {
+		Route::get('infocus', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
 			->where('categoryid', 8)
@@ -816,7 +851,7 @@ Route::get('infocus', function() {
 			
 		});
 
-Route::get('mn/infocus', function() {
+		Route::get('mn/infocus', function() {
 
 			$categorys = Category::All();
 
@@ -840,7 +875,7 @@ Route::get('mn/infocus', function() {
 			
 		});
 
-Route::get('mn/snapshots', function() {
+		Route::get('mn/snapshots', function() {
 
 			$categorys = Category::All();
 
@@ -864,9 +899,9 @@ Route::get('mn/snapshots', function() {
 			
 		});
 
-Route::get('picturesque', function() {
+		Route::get('picturesque', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
 			$lastpicturesques = Posts::where('active',1)
 			->where('categoryid', 6)
@@ -887,7 +922,7 @@ Route::get('picturesque', function() {
 			// ->orderBy('id','DESC')
 			// ->take(4)
 			// ->get();
-						$issue = Issues::orderBy('id','desc')->first();
+			$issue = Issues::orderBy('id','desc')->first();
 
 			return view('pages.picturesqueslist')
 			->with('postlists', $postlists)
@@ -900,359 +935,359 @@ Route::get('picturesque', function() {
 
 
 
-	Route::get('mn/magazine', function() {
+		Route::get('mn/magazine', function() {
 
-		$categorys = Category::All();
+			$categorys = Category::All();
 
-		
-		$travelsectorposts = Posts::where('active',1)
-		->where('categoryid', 1)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(5)
-		->get();
+			
+			$travelsectorposts = Posts::where('active',1)
+			->where('categoryid', 1)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(5)
+			->get();
 
-		$exposures = Posts::where('active',1)
-		->where('categoryid', 5)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(6)
-		->get();
+			$exposures = Posts::where('active',1)
+			->where('categoryid', 5)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(6)
+			->get();
 
-		$picturesques = Posts::where('active',1)
-		->where('categoryid', 6)
-		->where('name','!=','')
-		->orderBy('id','DESC')
-		->take(14)
-		->get();
-
-
-		$arrivals = Posts::where('active',1)
-		->where('categoryid', 7)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$infocus = Posts::where('active',1)
-		->where('categoryid', 8)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$deperatures = Posts::where('active',1)
-		->where('categoryid', 9)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$snapshops = Posts::where('active',1)
-		->where('categoryid', 10)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$checkins = Posts::where('active',1)
-		->where('categoryid', 11)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$standouts = Posts::where('active',1)
-		->where('categoryid', 12)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$undergrounds = Posts::where('active',1)
-		->where('categoryid', 13)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$popularposts = Posts::where('active',1)
-		->where('popular',1)
-		->where('categoryid','!=', 2)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
-
-		$recentposts = Posts::where('active',1)
-		->where('categoryid','!=', 2)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
+			$picturesques = Posts::where('active',1)
+			->where('categoryid', 6)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(14)
+			->get();
 
 
-		$book = Books::find(Books::max('id'));
- $thetalks = Posts::where('active',1)
+			$arrivals = Posts::where('active',1)
+			->where('categoryid', 7)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$infocus = Posts::where('active',1)
+			->where('categoryid', 8)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$deperatures = Posts::where('active',1)
+			->where('categoryid', 9)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$snapshops = Posts::where('active',1)
+			->where('categoryid', 10)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$checkins = Posts::where('active',1)
+			->where('categoryid', 11)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$standouts = Posts::where('active',1)
+			->where('categoryid', 12)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$undergrounds = Posts::where('active',1)
+			->where('categoryid', 13)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$popularposts = Posts::where('active',1)
+			->where('popular',1)
+			->where('categoryid','!=', 2)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 2)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+
+
+			$book = Books::find(Books::max('id'));
+			$thetalks = Posts::where('active',1)
 			->where('categoryid', 14)
 			->where('mname','!=','')
 			->orderBy('id','DESC')
 			->take(2)
 			->get();
 
+			
+			return view('pages.magazinesmyanmar')
+			->with('categorys', $categorys)
+			->with('travelsectorposts', $travelsectorposts)
+			->with('exposures', $exposures)
+			->with('picturesques', $picturesques)
+			->with('arrivals', $arrivals)
+			->with('infocus', $infocus)
+			->with('deperatures', $deperatures)
+			->with('snapshops', $snapshops)
+			->with('checkins', $checkins)
+			->with('standouts', $standouts)
+			->with('undergrounds', $undergrounds)
+			->with('popularposts', $popularposts)
+			->with('recentposts', $recentposts)
+			->with('book', $book)
+			->with('thetalks', $thetalks);
+			;
+			
+			
+		});
+
+		Route::get('magazinemyanmar', function() {
+
+			$categorys = Category::All();
+
+			
+			$travelsectorposts = Posts::where('active',1)
+			->where('categoryid', 1)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(5)
+			->get();
+
+			$exposures = Posts::where('active',1)
+			->where('categoryid', 5)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(6)
+			->get();
+
+			$picturesques = Posts::where('active',1)
+			->where('categoryid', 6)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(14)
+			->get();
+
+
+			$arrivals = Posts::where('active',1)
+			->where('categoryid', 7)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$infocus = Posts::where('active',1)
+			->where('categoryid', 8)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$deperatures = Posts::where('active',1)
+			->where('categoryid', 9)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$snapshops = Posts::where('active',1)
+			->where('categoryid', 10)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$checkins = Posts::where('active',1)
+			->where('categoryid', 11)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$standouts = Posts::where('active',1)
+			->where('categoryid', 12)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$undergrounds = Posts::where('active',1)
+			->where('categoryid', 13)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(3)
+			->get();
+
+			$popularposts = Posts::where('active',1)
+			->where('popular',1)
+			->where('categoryid','!=', 2)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 2)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+
+
+			$book = Books::find(Books::max('id'));
+
+			
+			return view('pages.magazinesmyanmar')
+			->with('categorys', $categorys)
+			->with('travelsectorposts', $travelsectorposts)
+			->with('exposures', $exposures)
+			->with('picturesques', $picturesques)
+			->with('arrivals', $arrivals)
+			->with('infocus', $infocus)
+			->with('deperatures', $deperatures)
+			->with('snapshops', $snapshops)
+			->with('checkins', $checkins)
+			->with('standouts', $standouts)
+			->with('undergrounds', $undergrounds)
+			->with('popularposts', $popularposts)
+			->with('recentposts', $recentposts)
+			->with('book', $book);
+			;
+			
+			
+		});
+
+		Route::get('booking', function() {
+
+			$categorys = Category::All();
+			
+			return view('pages.booking')
+			->with('categorys', $categorys);
+			
+			
+		});
+
+
+		Route::get('thetalk/{postname}', [
+			'uses' => 'PostsController@thetalks'
+			]);
+
+		Route::get('mn/thetalks/{postname}', [
+			'uses' => 'PostsController@thetalksmn'
+			]);
+
+		Route::get('underground/{postname}', [
+			'uses' => 'PostsController@underground'
+			]);
+		Route::get('mn/underground/{postname}', [
+			'uses' => 'PostsController@undergroundmn'
+			]);
+
+
+		Route::get('arrivals/{postname}', [
+			'uses' => 'PostsController@arrival'
+			]);
+		Route::get('mn/arrivals/{postname}', [
+			'uses' => 'PostsController@arrivalmn'
+			]);
+
 		
-		return view('pages.magazinesmyanmar')
-		->with('categorys', $categorys)
-		->with('travelsectorposts', $travelsectorposts)
-		->with('exposures', $exposures)
-		->with('picturesques', $picturesques)
-		->with('arrivals', $arrivals)
-		->with('infocus', $infocus)
-		->with('deperatures', $deperatures)
-		->with('snapshops', $snapshops)
-		->with('checkins', $checkins)
-		->with('standouts', $standouts)
-		->with('undergrounds', $undergrounds)
-		->with('popularposts', $popularposts)
-		->with('recentposts', $recentposts)
-		->with('book', $book)
-                ->with('thetalks', $thetalks);
-		;
-		
-		
-	});
-
-	Route::get('magazinemyanmar', function() {
-
-		$categorys = Category::All();
+		Route::get('departures/{postname}', [
+			'uses' => 'PostsController@deperature'
+			]);
+		Route::get('mn/deperature/{postname}', [
+			'uses' => 'PostsController@deperaturemn'
+			]);
 
 		
-		$travelsectorposts = Posts::where('active',1)
-		->where('categoryid', 1)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(5)
-		->get();
+		Route::get('checkin/{postname}', [
+			'uses' => 'PostsController@checkin'
+			]);
+		Route::get('mn/checkin/{postname}', [
+			'uses' => 'PostsController@checkinmn'
+			]);
 
-		$exposures = Posts::where('active',1)
-		->where('categoryid', 5)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(6)
-		->get();
+		Route::get('picturesque/{postname}', [
+			'uses' => 'PostsController@picturesquefun'
+			]);
 
-		$picturesques = Posts::where('active',1)
-		->where('categoryid', 6)
-		->where('name','!=','')
-		->orderBy('id','DESC')
-		->take(14)
-		->get();
+		Route::get('picturesques/{postname}', [
+			'uses' => 'PostsController@picturesquefundetail'
+			]);
 
+		Route::get('snapshots/{postname}', [
+			'uses' => 'PostsController@snapshots'
+			]);
+		Route::get('mn/snapshots/{postname}', [
+			'uses' => 'PostsController@mnsnapshots'
+			]);
 
-		$arrivals = Posts::where('active',1)
-		->where('categoryid', 7)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
+		Route::get('postdetails/{postid}', [
+			'uses' => 'PostsController@postdetails'
+			]);
 
-		$infocus = Posts::where('active',1)
-		->where('categoryid', 8)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$deperatures = Posts::where('active',1)
-		->where('categoryid', 9)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$snapshops = Posts::where('active',1)
-		->where('categoryid', 10)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$checkins = Posts::where('active',1)
-		->where('categoryid', 11)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$standouts = Posts::where('active',1)
-		->where('categoryid', 12)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$undergrounds = Posts::where('active',1)
-		->where('categoryid', 13)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(3)
-		->get();
-
-		$popularposts = Posts::where('active',1)
-		->where('popular',1)
-		->where('categoryid','!=', 2)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
-
-		$recentposts = Posts::where('active',1)
-		->where('categoryid','!=', 2)
-		->where('mname','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
+		Route::get('travelsectorupdates/{postname}', [
+			'uses' => 'PostsController@travelsectorupdate'
+			]);
 
 
-		$book = Books::find(Books::max('id'));
+		Route::get('exposure/{postname}', [
+			'uses' => 'PostsController@exposure'
+			]);
+		Route::get('exposures/{postname}', [
+			'uses' => 'PostsController@exposuredetail'
+			]);
 
-		
-		return view('pages.magazinesmyanmar')
-		->with('categorys', $categorys)
-		->with('travelsectorposts', $travelsectorposts)
-		->with('exposures', $exposures)
-		->with('picturesques', $picturesques)
-		->with('arrivals', $arrivals)
-		->with('infocus', $infocus)
-		->with('deperatures', $deperatures)
-		->with('snapshops', $snapshops)
-		->with('checkins', $checkins)
-		->with('standouts', $standouts)
-		->with('undergrounds', $undergrounds)
-		->with('popularposts', $popularposts)
-		->with('recentposts', $recentposts)
-		->with('book', $book);
-		;
-		
-		
-	});
-
-	Route::get('booking', function() {
-
-		$categorys = Category::All();
-		
-		return view('pages.booking')
-		->with('categorys', $categorys);
-		
-		
-	});
+		Route::get('mn/exposure/{postname}', [
+			'uses' => 'PostsController@exposuremn'
+			]);
 
 
-Route::get('thetalk/{postname}', [
-		'uses' => 'PostsController@thetalks'
-		]);
+		Route::get('mn/travelsectorupdate/{postname}', [
+			'uses' => 'PostsController@travelsectorupdatemn'
+			]);
 
-Route::get('mn/thetalks/{postname}', [
-		'uses' => 'PostsController@thetalksmn'
-		]);
-
-Route::get('underground/{postname}', [
-		'uses' => 'PostsController@underground'
-		]);
-Route::get('mn/underground/{postname}', [
-		'uses' => 'PostsController@undergroundmn'
-		]);
+		Route::get('standout/{postname}', [
+			'uses' => 'PostsController@standout'
+			]);
 
 
-Route::get('arrivals/{postname}', [
-		'uses' => 'PostsController@arrival'
-		]);
-Route::get('mn/arrivals/{postname}', [
-		'uses' => 'PostsController@arrivalmn'
-		]);
-
-	
-Route::get('departures/{postname}', [
-		'uses' => 'PostsController@deperature'
-		]);
-Route::get('mn/deperature/{postname}', [
-		'uses' => 'PostsController@deperaturemn'
-		]);
-
-	
-Route::get('checkin/{postname}', [
-		'uses' => 'PostsController@checkin'
-		]);
-Route::get('mn/checkin/{postname}', [
-		'uses' => 'PostsController@checkinmn'
-		]);
-
-Route::get('picturesque/{postname}', [
-		'uses' => 'PostsController@picturesquefun'
-		]);
-
-Route::get('picturesques/{postname}', [
-		'uses' => 'PostsController@picturesquefundetail'
-		]);
-
-Route::get('snapshots/{postname}', [
-		'uses' => 'PostsController@snapshots'
-		]);
-Route::get('mn/snapshots/{postname}', [
-		'uses' => 'PostsController@mnsnapshots'
-		]);
-
-	Route::get('postdetails/{postid}', [
-		'uses' => 'PostsController@postdetails'
-		]);
-
-Route::get('travelsectorupdates/{postname}', [
-		'uses' => 'PostsController@travelsectorupdate'
-		]);
+		Route::get('mn/standout/{postname}', [
+			'uses' => 'PostsController@standoutmn'
+			]);
 
 
-Route::get('exposure/{postname}', [
-		'uses' => 'PostsController@exposure'
-		]);
-Route::get('exposures/{postname}', [
-		'uses' => 'PostsController@exposuredetail'
-		]);
+		Route::get('latestblog/{postname}', [
+			'uses' => 'PostsController@latestblog'
+			]);
 
-Route::get('mn/exposure/{postname}', [
-		'uses' => 'PostsController@exposuremn'
-		]);
+		Route::get('infocus/{postname}', [
+			'uses' => 'PostsController@infocus'
+			]);
 
-
-Route::get('mn/travelsectorupdate/{postname}', [
-		'uses' => 'PostsController@travelsectorupdatemn'
-		]);
-
-Route::get('standout/{postname}', [
-		'uses' => 'PostsController@standout'
-		]);
+		Route::get('mn/infocus/{postname}', [
+			'uses' => 'PostsController@infocusmn'
+			]);
 
 
-Route::get('mn/standout/{postname}', [
-		'uses' => 'PostsController@standoutmn'
-		]);
-
-
-Route::get('latestblog/{postname}', [
-		'uses' => 'PostsController@latestblog'
-		]);
-
-Route::get('infocus/{postname}', [
-		'uses' => 'PostsController@infocus'
-		]);
-
-Route::get('mn/infocus/{postname}', [
-		'uses' => 'PostsController@infocusmn'
-		]);
-
-
-	Route::get('postdetailsmyanmar/{postid}', [
-		'uses' => 'PostsController@postdetailsmyanmar'
-		]);
+		Route::get('postdetailsmyanmar/{postid}', [
+			'uses' => 'PostsController@postdetailsmyanmar'
+			]);
 
 	// Route::get('picpostdetails/{postid}', [
 	// 	'uses' => 'PostsController@picpostdetails'
@@ -1262,200 +1297,200 @@ Route::get('mn/infocus/{postname}', [
 	// 	'uses' => 'PostsController@picpostdetailsmyanmar'
 	// 	]);
 
-	
-	
-	Route::resource('profiles','ProfilesController');
+		
+		
+		Route::resource('profiles','ProfilesController');
 
-	Route::controllers([
-		'auth' => 'Auth\AuthController',
-		'password' => 'Auth\PasswordController',
-		]);
+		Route::controllers([
+			'auth' => 'Auth\AuthController',
+			'password' => 'Auth\PasswordController',
+			]);
 
-	
-	Route::resource('joinus','JoinusController');
+		
+		Route::resource('joinus','JoinusController');
 
 
-	
-	Route::group(['middleware' => 'auth'],function()
-	{
+		
+		Route::group(['middleware' => 'auth'],function()
+		{
 
-        	Route::resource('votes','VotesController');
+			Route::resource('votes','VotesController');
 
-		     Route::resource('authors','AuthorController');
+			Route::resource('authors','AuthorController');
 
 			Route::resource('issues','IssuesController');
 
-	Route::get('adcheckout/{adid}', function($adid) {
+			Route::get('adcheckout/{adid}', function($adid) {
+
+				
+				$categorys = Category::All();
+				return view('pages.adcheckout')
+				->with('categorys', $categorys)
+				->with('adid', $adid);
+				
+				
+			});
+
+			Route::get('pictureupload', function() {
+
+				$categorys = Category::All();
+				
+				return view('pages.pictureupload')
+				->with('categorys', $categorys);
+				
+				
+			});
+
+			Route::resource('picturesques','PictureuploadsController');
+			
+			Route::get('maketest/{id}', [
+				'uses' => 'CheckoutController@maketest'
+				]);
+
+			Route::get('bookstore', function() {
+
+				$categorys = Category::All();
+				
+
+				$books = Books::orderBy('volnumber', 'DESC')
+				->get();
+				$affed = Orderstemp::where('userid', Auth::user()->id)->delete();
+				
+				$bookcols = Books::distinct()->get(['volnumber']);
+
+				$orderbooks = Orderstemp::where('userid', Auth::user()->id)
+				->get();
+				
+				return view('pages.bookstore')
+				->with('categorys', $categorys)
+				->with('books', $books)
+				->with('bookcols', $bookcols)
+				->with('orderbooks', $orderbooks);
+				
+				
+			});
 
 			
-			$categorys = Category::All();
-			return view('pages.adcheckout')
-			->with('categorys', $categorys)
-			->with('adid', $adid);
-			
-			
-		});
+			Route::get('bookbuy', function() {
 
-		Route::get('pictureupload', function() {
+				$categorys = Category::All();
+				
 
-			$categorys = Category::All();
-			
-			return view('pages.pictureupload')
-			->with('categorys', $categorys);
-			
-			
-		});
-
-		Route::resource('picturesques','PictureuploadsController');
-		
-		 Route::get('maketest/{id}', [
-		 	'uses' => 'CheckoutController@maketest'
-		 	]);
-
-		Route::get('bookstore', function() {
-
-			$categorys = Category::All();
-			
-
-			$books = Books::orderBy('volnumber', 'DESC')
-			->get();
-			$affed = Orderstemp::where('userid', Auth::user()->id)->delete();
-			
-			$bookcols = Books::distinct()->get(['volnumber']);
-
-			$orderbooks = Orderstemp::where('userid', Auth::user()->id)
-								->get();
-			
-			return view('pages.bookstore')
-			->with('categorys', $categorys)
-			->with('books', $books)
-			->with('bookcols', $bookcols)
-			->with('orderbooks', $orderbooks);
-			
-			
-		});
-
-                
-                Route::get('bookbuy', function() {
-
-			$categorys = Category::All();
-			
-
-			$books = Books::orderBy('volnumber', 'DESC')
-			->get();
+				$books = Books::orderBy('volnumber', 'DESC')
+				->get();
 			// $affed = Orderstemp::where('userid', Auth::user()->id)->delete();
+				
+				$bookcols = Books::distinct()->get(['volnumber']);
+
+				$orderbooks = Orderstemp::where('userid', Auth::user()->id)
+				->get();
+				
+				return view('pages.bookstore')
+				->with('categorys', $categorys)
+				->with('books', $books)
+				->with('bookcols', $bookcols)
+				->with('orderbooks', $orderbooks);
+				
+				
+			});
+
+
+			Route::get('bookstoremyanmar', function() {
+
+				$categorys = Category::All();
+				
+
+				$books = Books::orderBy('volnumber', 'DESC')
+				->get();
+				$affed = Orderstemp::where('userid', Auth::user()->id)->delete();
+				
+				$bookcols = Books::distinct()->get(['volnumber']);
+
+				$orderbooks = Orderstemp::where('userid', Auth::user()->id)
+				->get();
+				
+				return view('pages.bookstoremyanmar')
+				->with('categorys', $categorys)
+				->with('books', $books)
+				->with('bookcols', $bookcols)
+				->with('orderbooks', $orderbooks);
+				
+				
+			});
+
+
+
+
+			Route::post('makeorder', [
+				'uses' => 'CheckoutController@makeorder'
+				]);
+
+			Route::resource('checkouts','CheckoutController');
+			Route::resource('checkoutsmyanmar','CheckoutmyanmarController');
 			
-			$bookcols = Books::distinct()->get(['volnumber']);
+			Route::get('subscribecheckouts/{bookid}', [
+				'uses' => 'CheckoutController@subscribeindex'
+				]);
 
-			$orderbooks = Orderstemp::where('userid', Auth::user()->id)
-								->get();
+			Route::get('subscribemyanmarcheckouts/{bookid}', [
+				'uses' => 'CheckoutmyanmarController@subscribemyanmarindex'
+				]);
+
+
+			Route::resource('comments','CommentsController');
+			Route::resource('replycomments','ReplycommentsController');
 			
-			return view('pages.bookstore')
-			->with('categorys', $categorys)
-			->with('books', $books)
-			->with('bookcols', $bookcols)
-			->with('orderbooks', $orderbooks);
-			
-			
-		});
+			Route::group(['middleware' => 'rolewaredashboard'],function()
+			{
+				Route::resource('dashboard','DashboardController');
 
+			});	
+			Route::group(['middleware' => 'roleware6'],function()
+			{
+				Route::resource('advertises','AdlistsController');
+			});		
 
-		Route::get('bookstoremyanmar', function() {
+			Route::group(['middleware' => 'roleware5'],function()
+			{
+				Route::resource('orderlists','OrderlistsController');
+			});		
 
-			$categorys = Category::All();
-			
-
-			$books = Books::orderBy('volnumber', 'DESC')
-			->get();
-			$affed = Orderstemp::where('userid', Auth::user()->id)->delete();
-			
-			$bookcols = Books::distinct()->get(['volnumber']);
-
-			$orderbooks = Orderstemp::where('userid', Auth::user()->id)
-								->get();
-			
-			return view('pages.bookstoremyanmar')
-			->with('categorys', $categorys)
-			->with('books', $books)
-			->with('bookcols', $bookcols)
-			->with('orderbooks', $orderbooks);
-			
-			
-		});
-
-
-
-
-		Route::post('makeorder', [
-			'uses' => 'CheckoutController@makeorder'
-			]);
-
-		Route::resource('checkouts','CheckoutController');
-		Route::resource('checkoutsmyanmar','CheckoutmyanmarController');
-		
-		Route::get('subscribecheckouts/{bookid}', [
-			'uses' => 'CheckoutController@subscribeindex'
-			]);
-
-		Route::get('subscribemyanmarcheckouts/{bookid}', [
-			'uses' => 'CheckoutmyanmarController@subscribemyanmarindex'
-			]);
-
-
-		Route::resource('comments','CommentsController');
-		Route::resource('replycomments','ReplycommentsController');
-		
-		Route::group(['middleware' => 'rolewaredashboard'],function()
-		{
-			Route::resource('dashboard','DashboardController');
-
-		});	
-		Route::group(['middleware' => 'roleware6'],function()
-		{
-			Route::resource('advertises','AdlistsController');
-		});		
-
-		Route::group(['middleware' => 'roleware5'],function()
-		{
-			Route::resource('orderlists','OrderlistsController');
-		});		
-
-		Route::group(['middleware' => 'roleware3_4'],function()
-		{
-			
-			
-			Route::resource('posts','PostsController');
-			Route::resource('postsmyanmar','PostsmyanmarController');
-
-			Route::group(['middleware' => 'roleware2'],function()
+			Route::group(['middleware' => 'roleware3_4'],function()
 			{
 				
-
-				Route::resource('subscribes','SubscribesController');
-
-				Route::resource('books','BooksController');
-
-				Route::get('dashboarduserprofile', [
-					'uses' => 'ProfilesController@dashboarduserindex'
-					]);
-
 				
+				Route::resource('posts','PostsController');
+				Route::resource('postsmyanmar','PostsmyanmarController');
 
-				Route::group(['middleware' => 'roleware'],function()
+				Route::group(['middleware' => 'roleware2'],function()
 				{
 					
-					Route::resource('categorys','CategoryController');
-					Route::resource('userspannel','UserspannelController');
-					
-				});
 
+					Route::resource('subscribes','SubscribesController');
+
+					Route::resource('books','BooksController');
+
+					Route::get('dashboarduserprofile', [
+						'uses' => 'ProfilesController@dashboarduserindex'
+						]);
+
+					
+
+					Route::group(['middleware' => 'roleware'],function()
+					{
+						
+						Route::resource('categorys','CategoryController');
+						Route::resource('userspannel','UserspannelController');
+						
+					});
+
+				});
+				
 			});
+
+
+
 			
 		});
-
-
-
-		
-	});
 
 	

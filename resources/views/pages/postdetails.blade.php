@@ -57,23 +57,23 @@ foreach($postdetail->comments as $cmt)
 
 							<p style="text-decoration:none;text-align:justify;"><?php echo $sbody; ?></p>
 							<p style="text-decoration:none;text-align:justify;"><?php echo $lbody; ?></p>
-								<div class="clear"></div>
+							<div class="clear"></div>
 							@endif
-						
+							
 							<div class="si-share noborder clearfix">
 								<span>Share this Post:</span>
 								<div>
-                                                                                <a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
-											<i class="icon-facebook"></i>
-											<i class="icon-facebook"></i>
-										</a>
+									<a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
 
 
 
 
 									
-									<a href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large"" class="social-icon si-borderless si-twitter">
+									<a href="{{ url('/tweet', $postdetail->id) }}"
+										data-size="large"" class="social-icon si-borderless si-twitter">
 										<i class="icon-twitter"></i>
 										<i class="icon-twitter"></i>
 									</a>
@@ -216,32 +216,32 @@ foreach($postdetail->comments as $cmt)
 
 					<div class="sidebar nobottommargin col_last clearfix">
 						<div class="sidebar-widgets-wrap">
-<div class="widget widget_links clearfix">
+							<div class="widget widget_links clearfix">
 
 								<h4>Categories</h4>
-									<div class="col_half nobottommargin">
-										<ul>
-											@for($i = 0; $i < count($categorys); $i++)
-											@if($i < 6)
-											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
-											@endif
-											@endfor
+								<div class="col_half nobottommargin">
+									<ul>
+										@for($i = 0; $i < count($categorys); $i++)
+										@if($i < 6)
+										<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+										@endif
+										@endfor
 
 
-										</ul>
-									</div>
-									<div class="col_half nobottommargin col_last">
-										<ul>
+									</ul>
+								</div>
+								<div class="col_half nobottommargin col_last">
+									<ul>
 
-											@for($i = 6; $i < count($categorys); $i++)
+										@for($i = 6; $i < count($categorys); $i++)
 
-											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+										<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
 
-											@endfor
+										@endfor
 
 
-										</ul>
-									</div>
+									</ul>
+								</div>
 
 							</div>
 
@@ -259,7 +259,7 @@ foreach($postdetail->comments as $cmt)
 							
 							
 
-								
+							
 
 							@endif
 
@@ -391,12 +391,12 @@ foreach($postdetail->comments as $cmt)
 		</div>
 
 	</section><!-- #content end -->
-<script language="javascript">
-								function fbshareCurrentPage()
-								{window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+"&t="+document.title, '', 
-									'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-								return false; }
-							</script>
+	<script language="javascript">
+		function fbshareCurrentPage()
+		{window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+"&t="+document.title, '', 
+			'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		return false; }
+	</script>
 
 	
-@stop
+	@stop

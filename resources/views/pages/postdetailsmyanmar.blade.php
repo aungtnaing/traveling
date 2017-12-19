@@ -68,7 +68,7 @@
 											<i class="icon-facebook"></i>
 											<i class="icon-facebဒီ Post Share Facebook"></i>
 										</a>
-										<a href="#" class="social-icon si-borderless si-twitter">
+										<a href="{{ url('/tweetmn', $postdetail->id) }}" class="social-icon si-borderless si-twitter">
 											<i class="icon-twitter"></i>
 											<i class="icon-twitter"></i>
 										</a>

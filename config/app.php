@@ -82,6 +82,8 @@ return [
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
+	// 'cipher' => 'AES-256-CBC', 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Logging Configuration
@@ -136,6 +138,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		Laravel\Socialite\SocialiteServiceProvider::class,
+		Thujohn\Twitter\TwitterServiceProvider::class,
 
 
 		/*
@@ -195,7 +198,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+		'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
 
 	],
 
