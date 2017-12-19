@@ -70,13 +70,17 @@ foreach($postdetail->comments as $cmt)
 
 
 
-									
-									<a href="{{ url('/tweet', $postdetail->id) }}"
-										data-size="large"" class="social-icon si-borderless si-twitter">
-										<i class="icon-twitter"></i>
-										<i class="icon-twitter"></i>
-									</a>
-									
+									<a href="https://twitter.com/share?
+									url&
+									via=twitterdev&
+									related=twitterapi%2Ctwitter&
+									hashtags=example%2Cdemo&
+									text={{ $postdetail->name }}"
+									data-size="large"" class="social-icon si-borderless si-twitter">
+									<i class="icon-twitter"></i>
+									<i class="icon-twitter"></i>
+								</a>
+								
 									<!-- <a href="#" class="social-icon si-borderless si-gplus">
 										<i class="icon-gplus"></i>
 										<i class="icon-gplus"></i>
