@@ -35,29 +35,28 @@ class FacebookController extends Controller {
 	 */
 	public function getSocialAuth($provider=null)
 	{
-           if(!config("services.$provider")) abort('404'); //just to handle providers that doesn't exist
+   if(!config("services.$provider")) abort('404');
 
-           return $this->socialite->with($provider)->redirect();
-         }
-
-
-         public function getSocialAuthCallback($provider=null)
-         {
-
-       		// echo "string";
-       		// die();
-          if($fbuser = $this->socialite->with($provider)->user())
-          {
+   return $this->socialite->with($provider)->redirect();
+ }
 
 
-           if(User::where('fbuserid', '=', $fbuser->id)->orWhere('email','=',$fbuser->email)->first())
-           {
+ public function getSocialAuthCallback($provider=null)
+ {
 
-            $checkUser = User::where('fbuserid', '=', $fbuser->id)->orWhere('email','=',$fbuser->email)->first();
+
+  if($fbuser = $this->socialite->with($provider)->user())
+  {
+
+
+   if(User::where('fbuserid', '=', $fbuser->id)->orWhere('email','=',$fbuser->email)->first())
+   {
+
+    $checkUser = User::where('fbuserid', '=', $fbuser->id)->orWhere('email','=',$fbuser->email)->first();
 
              // dd($checkUser);
-       			Auth::login($checkUser);
-      return back()->withInput();
+    Auth::login($checkUser);
+                    return redirect('home');
             // $credentials = array(
             //   'email' => $checkUser->email,
             //   'password' => $checkUser->password
@@ -67,22 +66,22 @@ class FacebookController extends Controller {
             // {
             //   return redirect()->action('HomeController@index');
             // }
-          }
+  }
 
-          $user = new User();
+  $user = new User();
 
 
-          $user->name = $fbuser->getName();
-          if($fbuser->getEmail() == "")
-          {
-                        $user->email = $fbuser->id . "@mymagical.com";
+  $user->name = $fbuser->getName();
+  if($fbuser->getEmail() == "")
+  {
+    $user->email = $fbuser->id . "@mymagical.com";
 
-          }
-          else
-          {
-                      $user->email = $fbuser->getEmail();
+  }
+  else
+  {
+    $user->email = $fbuser->getEmail();
 
-          }
+  }
 
 
 
@@ -91,7 +90,7 @@ class FacebookController extends Controller {
 
             $user->save();   
             Auth::login($user);
-      return back()->withInput();
+                          return redirect('home');
             // $credentials = array(
             //   'email' => $checkUser->email,
             //   'password' => $checkUser->password
