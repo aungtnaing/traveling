@@ -102,11 +102,11 @@
 <!--End mc_embed_signup-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1395950293865855';
-	fjs.parentNode.insertBefore(js, fjs);
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1395950293865855';
+  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="widget clearfix" style="margin-bottom: -20px;">
 
@@ -118,7 +118,7 @@
 				<i class="icon-facebook"></i>
 			</a> -->
 			<!-- <a href="https://www.facebook.com/mymagicalmyanmar/?ref=br_rs" target="blank"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a> -->
-			<div class="fb-like" data-href="https://web.facebook.com/mymagicalmyanmar?_rdc=1&amp;_rdr" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+			<div class="fb-like" data-href="https://www.facebook.com/mymagicalmyanmar" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 		</div>
 		<div class="col-md-6 clearfix">
 			<a href="http://www.mymagicalmyanmar.com/rss-feed.xml" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
