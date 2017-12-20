@@ -113,10 +113,10 @@
 	<div class="row">
 
 		<div class="col-md-6 clearfix bottommargin-sm">
-			<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+			<!-- <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
 				<i class="icon-facebook"></i>
 				<i class="icon-facebook"></i>
-			</a>
+			</a> -->
 			<!-- <a href="https://www.facebook.com/mymagicalmyanmar/?ref=br_rs" target="blank"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a> -->
 			<div class="fb-like" data-href="https://web.facebook.com/mymagicalmyanmar?_rdc=1&amp;_rdr" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 		</div>
