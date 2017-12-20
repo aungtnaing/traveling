@@ -59,15 +59,24 @@ foreach($postdetail->comments as $cmt)
 							<p style="text-decoration:none;text-align:justify;"><?php echo $lbody; ?></p>
 							<div class="clear"></div>
 							@endif
-							
+							<div id="fb-root"></div>
+							<script>(function(d, s, id) {
+								var js, fjs = d.getElementsByTagName(s)[0];
+								if (d.getElementById(id)) return;
+								js = d.createElement(s); js.id = id;
+								js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1";
+								fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
 							<div class="si-share noborder clearfix">
 								<span>Share this Post:</span>
 								<div>
-									<a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
+									<!-- <a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
 										<i class="icon-facebook"></i>
 										<i class="icon-facebook"></i>
-									</a>
-
+									</a> -->
+									<div class="fb-share-button" data-href="url" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="social-icon si-borderless si-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?url;src=sdkpreparse">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i></a></div>
 
 
 

@@ -76,7 +76,8 @@ foreach($postdetail->comments as $cmt)
 										<i class="icon-facebook"></i>
 									</a> -->
 
-									<div class="fb-share-button" data-href="url" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="social-icon si-borderless si-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?url&amp;src=sdkpreparse">
+
+									<div class="fb-share-button" data-href="url" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="social-icon si-borderless si-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?url;src=sdkpreparse">
 										<i class="icon-facebook"></i>
 										<i class="icon-facebook"></i></a></div>
 
