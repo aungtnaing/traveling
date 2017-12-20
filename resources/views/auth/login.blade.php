@@ -149,7 +149,7 @@ Session::set('backUrl', URL::previous());
 
                             <br>
                             <div id="fb-root"></div>
-
+                            <a href="{{ url('/login/facebook') }}" class="loginBtn loginBtn--facebook">Login with Facebook</a>
                            
 
 
