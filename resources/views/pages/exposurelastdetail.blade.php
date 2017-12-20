@@ -70,13 +70,23 @@ foreach($postdetail->comments as $cmt)
 							<div class="si-share noborder clearfix">
 								<span>Share this Post:</span>
 								<div>
-									<!-- <a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
-										<i class="icon-facebook"></i>
-										<i class="icon-facebook"></i>
-									</a> -->
+									<?php 
+									if (isset($_SERVER['HTTP_USER_AGENT'])) {
+										$agent = $_SERVER['HTTP_USER_AGENT'];
+									}?>
+
+									@if(strlen(strstr($agent, 'Firefox')) > 0) 
+									
 									<div class="fb-share-button" data-href="url" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="social-icon si-borderless si-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?url;src=sdkpreparse">
 										<i class="icon-facebook"></i>
 										<i class="icon-facebook"></i></a></div>
+
+									@else
+									<a href="javascript:fbshareCurrentPage()" class="social-icon si-borderless si-facebook"  target="_blank" alt="Share on Facebook">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									@endif
 
 
 
