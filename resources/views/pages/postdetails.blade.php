@@ -27,7 +27,7 @@ foreach($postdetail->comments as $cmt)
 						</div>
 						<ul class="entry-meta clearfix">
 							<li><i class="icon-calendar3"></i>{{ $postdetail->created_at }}</li>
-							<li><a href="{{ url('/authorprofile', $postdetail->author->id) }}"><i class="icon-user"></i>{{ $postdetail->author->name }}</a></li>
+							<li><a href="{{ url('/postlistsbyauthor', $postdetail->author->id) }}"><i class="icon-user"></i>{{ $postdetail->author->name }}</a></li>
 							<li><i class="icon-comments"></i> {{ $tcmt }} Comments</li>
 						</ul>
 						<div class="entry-image">
@@ -125,7 +125,7 @@ foreach($postdetail->comments as $cmt)
 					
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Author by <span><a href="{{ url('/authorprofile', $postdetail->author->id) }}">{{ $postdetail->author->name }}</a></span></h3>
+							<h3 class="panel-title">Author by <span><a href="{{ url('/postlistsbyauthor', $postdetail->author->id) }}">{{ $postdetail->author->name }}</a></span></h3>
 						</div>
 						<div class="panel-body">
 							<div class="author-image">

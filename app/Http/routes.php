@@ -299,6 +299,30 @@
 			
 		}]);
 
+		Route::get('postlistsbyauthor/{authorid}', ['as' => 'postlistsbyauthor', function ($authorid) {
+			$categorys = Category::All();
+
+			$postlists = Posts::where('active',1)
+			->where('authorid', $authorid)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->paginate(4);
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 2)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+			
+			return view('pages.postlists')
+			->with('postlists', $postlists)
+			->with('categorys', $categorys)
+			->with('latestposts', $recentposts);
+			
+			
+		}]);
+
 		
 		Route::get('picturesqueslist/{categoryid}', ['as' => 'picturesqueslist', function ($categoryid) {
 			$categorys = Category::All();

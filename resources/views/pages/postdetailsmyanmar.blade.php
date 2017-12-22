@@ -27,7 +27,7 @@ foreach($postdetail->comments as $cmt)
 						</div>
 						<ul class="entry-meta clearfix">
 							<li><i class="icon-calendar3"></i>{{ $postdetail->created_at }}</li>
-							<li><a href="{{ url('/authorprofile', $postdetail->user->id) }}"><i class="icon-user"></i>{{ $postdetail->user->name }}</a></li>
+							<li><a href="{{ url('/postlistsbyauthor', $postdetail->user->id) }}"><i class="icon-user"></i>{{ $postdetail->author->name }}</a></li>
 							<li><i class="icon-comments"></i> {{ $tcmt }} Comments</li>
 						</ul>
 						<div class="entry-image">
@@ -87,13 +87,13 @@ foreach($postdetail->comments as $cmt)
 						<div class="line"></div>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Posted by <span><a href="{{ url('/authorprofile', $postdetail->user->id) }}">{{ $postdetail->user->name }}</a></span></h3>
+								<h3 class="panel-title">Posted by <span><a href="{{ url('/postlistsbyauthor', $postdetail->author->id) }}">{{ $postdetail->author->name }}</a></span></h3>
 							</div>
 							<div class="panel-body">
 								<div class="author-image">
 									<img src="{{ $postdetail->user->photourl }}" alt="" class="img-circle">
 								</div>
-								{{ $postdetail->user->bio }}
+								<?php echo $postdetail->author->bio; ?>
 							</div>
 						</div>
 						@else
