@@ -163,7 +163,7 @@ class LanguageController extends Controller {
 
 
 		$specialfeatures = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('mname','!=','')
 			->orderBy('id','DESC')
 			->take(8)
@@ -353,7 +353,7 @@ if (strpos($a, 'magazine') !== false)
 
 
 		$specialfeatures = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('name','!=','')
 			->orderBy('id','DESC')
 			->take(8)

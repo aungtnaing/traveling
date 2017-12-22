@@ -364,9 +364,11 @@ class CheckoutController extends Controller {
 	{
 		//
 
-		Category::destroy($id);
+		// Category::destroy($id);
 
-		return redirect()->route("categorys.index");
+		// return redirect()->route("categorys.index");
+
+		
 	}
 
 

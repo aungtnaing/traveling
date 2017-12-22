@@ -129,6 +129,10 @@ class OrderlistsController extends Controller {
 	public function destroy($id)
 	{
 		//
+		// echo "hel";
+		// die();
+		Orders::destroy($id);
+		return redirect()->route("orderlists.index");
 	}
 
 

@@ -394,7 +394,7 @@
 			->get();
 
 			$standouts = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('name','!=','')
 			->orderBy('id','DESC')
 			->take(3)
@@ -1016,7 +1016,7 @@
 			->get();
 
 			$standouts = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('mname','!=','')
 			->orderBy('id','DESC')
 			->take(3)
@@ -1138,7 +1138,7 @@
 			->get();
 
 			$standouts = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('mname','!=','')
 			->orderBy('id','DESC')
 			->take(3)

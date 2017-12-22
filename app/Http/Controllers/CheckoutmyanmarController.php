@@ -337,9 +337,9 @@ class CheckoutmyanmarController extends Controller {
 	{
 		//
 
-		Category::destroy($id);
+		// Checkout::destroy($id);
 
-		return redirect()->route("categorys.index");
+		// return redirect()->route("categorys.index");
 	}
 
 

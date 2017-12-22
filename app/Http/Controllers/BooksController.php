@@ -277,13 +277,13 @@ class BooksController extends Controller {
 	{
 		//
 
-		$post = Posts::find($id);
+		$book = Books::find($id);
 		
-		if($post->photourl1!="")
+		if($book->photourl1!="")
 		{
-			if(file_exists(public_path() .$post->photourl1))
+			if(file_exists(public_path() .$book->photourl1))
 			{
-				unlink(public_path() . $post->photourl1);
+				unlink(public_path() . $book->photourl1);
 			}
 		}
 
@@ -294,7 +294,7 @@ class BooksController extends Controller {
 		
 		Books::destroy($id);
 
-		return redirect()->route("posts.index");
+		return redirect()->route("books.index");
 	}
 	
 

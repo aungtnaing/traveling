@@ -65,7 +65,7 @@ class WelcomeController extends Controller {
 			->get();
 
 			$specialfeatures = Posts::where('active',1)
-			->where('categoryid', 12)
+			->where('categoryid', 15)
 			->where('name','!=','')
 			->orderBy('id','DESC')
 			->take(8)
