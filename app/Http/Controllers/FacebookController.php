@@ -54,18 +54,10 @@ class FacebookController extends Controller {
 
     $checkUser = User::where('fbuserid', '=', $fbuser->id)->orWhere('email','=',$fbuser->email)->first();
 
-             // dd($checkUser);
+    
     Auth::login($checkUser);
-                    return redirect('home');
-            // $credentials = array(
-            //   'email' => $checkUser->email,
-            //   'password' => $checkUser->password
-            //   );
-
-            // if (Auth::attempt($credentials)) 
-            // {
-            //   return redirect()->action('HomeController@index');
-            // }
+    return redirect('home');
+    
   }
 
   $user = new User();
@@ -90,17 +82,10 @@ class FacebookController extends Controller {
 
             $user->save();   
             Auth::login($user);
-                          return redirect('home');
-            // $credentials = array(
-            //   'email' => $checkUser->email,
-            //   'password' => $checkUser->password
-            //   );
-
-            // if (Auth::attempt($credentials)) 
-            // {
-            //   return redirect()->action('HomeController@index');
-            // }
-          }else
+            return redirect('home');
+            
+          }
+          else
           {
            return 'something went wrong';
          }
