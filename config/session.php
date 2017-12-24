@@ -135,7 +135,7 @@ return [
 	|
 	*/
 
-	'domain' => 'www.mymagicalmyanmar.com',
+	'domain' => 'mymagicalmyanmar.com',
 
 	/*
 	|--------------------------------------------------------------------------
