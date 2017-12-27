@@ -68,7 +68,13 @@
 									@endif
 									<td><a class="btn btn-mini btn-primary" href="{{ route("whatnew.edit", $whatnew->id) }}">Edit</a></td>
 									@if(Auth::user()->roleid==1)
-									<th><button></button></th>
+									<td class="center">
+										<form method="POST" action="{{ route("whatnew.destroy", $whatnew->id) }}" accept-charset="UTF-8">
+											<input name="_method" type="hidden" value="DELETE">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+											<input class="btn btn-mini btn-danger" type="submit" value="Delete">
+										</form>
+									</td>
 									@else
 									<td></td>
 									@endif
