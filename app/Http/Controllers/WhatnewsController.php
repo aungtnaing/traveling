@@ -276,9 +276,22 @@ $whatnew->active = 0;
 	public function destroy($id)
 	{
 		//
-		Joinus::destroy($id);
+		// echo "string";
+		// die();
+		$whatnew = Whatnews::find($id);
+		
+		if($whatnew->photourl1!="")
+		{
+			if(file_exists(public_path() .$whatnew->photourl1))
+			{
+				unlink(public_path() . $whatnew->photourl1);
+			}
+		}
 
-		return redirect()->route("joinus.index");
+
+		Whatnews::destroy($id);
+
+		return redirect()->route("whatnew.index");
 	}
 
 
