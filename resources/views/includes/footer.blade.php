@@ -74,7 +74,7 @@
 								<!-- Begin MailChimp Signup Form -->
 								<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 								<style type="text/css">
-									#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+									#mc_embed_signup{clear:left; font:14px Helvetica,Arial,sans-serif; }
 	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
 	We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
@@ -86,7 +86,8 @@
 				<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
 				</label>
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"  style="color:#fff;background:#00b7e8;height: 35px;
+line-height: 20px;margin: 0 5px 10px 0;">
 			</div>
 
 			<div id="mce-responses" class="clear">
@@ -108,11 +109,10 @@
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1395950293865855';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div class="widget clearfix" style="margin-bottom: -20px;">
+<div class="widget clearfix>
 
 	<div class="row">
-
-		<div class="col-md-6 clearfix bottommargin-sm">
+		<div class="col-md-12 clearfix bottommargin-sm" style="height: 50px;">
 			<!-- <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
 				<i class="icon-facebook"></i>
 				<i class="icon-facebook"></i>
@@ -120,6 +120,10 @@
 			<!-- <a href="https://www.facebook.com/mymagicalmyanmar/?ref=br_rs" target="blank"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a> -->
 			<div class="fb-like" data-href="https://www.facebook.com/mymagicalmyanmar" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 		</div>
+	
+
+	</div>
+<div class="row">
 		<div class="col-md-6 clearfix">
 			<a href="http://www.mymagicalmyanmar.com/rss-feed.xml" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
 				<i class="icon-rss"></i>
@@ -128,28 +132,43 @@
 			<a href="rss-feed.xml"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
 		</div>
 
+
+
+
 	</div>
 
 
+
+
+
+</div>
+
+
+</div>
+
+
+
 </div>
 
 </div>
-<div class="clearfix"></div>
-<br></br>
-<div class="row">
-	<div class="col">
-		<div class="col-lg-2 col-sm-2 col-xs-4">
+
+	<div class="row" style="position:relative;padding-left: 50px;">
+
+
+
+	<div class="col_one_third col-md-12">
+		<div class="col-md-4">
 			<a href ="https://www.pata.org/" target="blank">
 				<img src="<?php echo url() ?>/images/member1.png" class="img-responsive" width="100px" height="50px">
 			</a>
+		
 		</div>
-		<div class="col-lg-2 col-sm-2 col-xs-4">
-
+<div class="col-md-4">
 			<a href="http://www.tourismmyanmar.org/" target="blank">
 				<img src="<?php echo url() ?>/images/member2.png" class="img-responsive"  width="100px" height="50px">
 			</a>
 		</div>
-		<div class="col-lg-2 col-sm-2 col-xs-4">
+		<div class="col-md-4">
 			<a href="https://www.umta.org/ " target="blank">
 				<img src="<?php echo url() ?>/images/member3.png" class="img-responsive"  width="100px" height="50px">
 			</a>
@@ -159,19 +178,19 @@
 
 </div><!-- .footer-widgets-wrap end -->
 
-
-</div>
-
 			<!-- Copyrights
 			============================================= -->
 			<div id="copyrights">
 
 				<div class="container clearfix">
-
+					
 					<div class="col_half">
 						Copyrights &copy; 2017 All Rights Reserved by Logistics Media Services Company Limited.<br>
 						
 					</div>
+				
+
+
 
 
 				</div>
