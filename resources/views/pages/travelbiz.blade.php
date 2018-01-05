@@ -186,8 +186,8 @@
 								</div>
 								<ul class="entry-meta clearfix">
 									<li><a href="{{ $whatnew->websiteurl }}"><i class="icon-globe"></i>{{ $whatnew->websiteurl }}</a></li>
-									<li><a href="{{ $whatnew->businessphone }}"><i class="icon-phone"></i>{{ $whatnew->businessphone }}</a></li>
-									<li><a href="{{ $whatnew->businessemail }}"><i class="icon-mail"></i>{{ $whatnew->businessemail }}</a></li>
+									<li><i class="icon-phone"></i>{{ $whatnew->businessphone }}</li>
+									<li><i class="icon-mail"></i>{{ $whatnew->businessemail }}</li>
 									
 								</ul>
 
@@ -211,8 +211,8 @@
 											<h5><a href="{{ $whatnewslist->websiteurl }}">{{ $whatnewslist->businessname }}</a></h5>
 											<ul class="entry-meta clearfix">
 												<li><a href="{{ $whatnewslist->websiteurl }}"><i class="icon-globe"></i>{{ $whatnewslist->websiteurl }}</a></li>
-												<li><a href="{{ $whatnewslist->businessphone }}"><i class="icon-phone"></i> 09888888888</a></li>
-												<li><a href="{{ $whatnewslist->businessemail }}"><i class="icon-mail"></i>asadsad@gmail.cm</a></li>
+												<li><i class="icon-phone"></i> {{ $whatnewslist->businessphone }}</li>
+												<li><i class="icon-mail"></i>{{ $whatnewslist->businessemail }}</li>
 												<li><i class="icon-home"></i>{{ $whatnewslist->address }}</li>
 
 											</ul>
