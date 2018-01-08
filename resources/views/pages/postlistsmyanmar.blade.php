@@ -50,7 +50,7 @@
 									
 								
 										<li><i class="icon-comments"></i>{{ $tcmt }}</li>
-										<li><a href="{{ url('/authorprofile', $postlist->user->id) }}"><i class="icon-user"></i> {{ $postlist->user->name }}</a></li>
+										<li><a href="{{ url('/postlistsmmbyauthor', $postlist->author->id) }}"><i class="icon-user"></i> {{ $postlist->author->name }}</a></li>
 									</ul>
 									<div class="entry-content">
 										<p><?php echo substr($postlist->mdescription,0, 300) ?></p>

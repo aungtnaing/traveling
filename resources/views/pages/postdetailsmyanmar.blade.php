@@ -87,7 +87,7 @@ foreach($postdetail->comments as $cmt)
 						<div class="line"></div>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Posted by <span><a href="{{ url('/postlistsbyauthor', $postdetail->author->id) }}">{{ $postdetail->author->name }}</a></span></h3>
+								<h3 class="panel-title">Posted by <span><a href="{{ url('/postlistsmmbyauthor', $postdetail->author->id) }}">{{ $postdetail->author->name }}</a></span></h3>
 							</div>
 							<div class="panel-body">
 								<div class="author-image">
