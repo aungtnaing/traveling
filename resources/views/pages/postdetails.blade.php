@@ -42,7 +42,7 @@ foreach($postdetail->comments as $cmt)
 						</div>
 						<div class="entry-content notopmargin">
 							@if($postdetail->category->id!=6)
-							<p style="text-decoration:none;text-align:justify;"><?php echo $fbody; ?></p>
+							<p style="text-decoration:none;"><?php echo $fbody; ?></p>
 
 							<!-- <div class="col_half col_last" >
 								<div class="entry1 clearfix">
@@ -55,8 +55,8 @@ foreach($postdetail->comments as $cmt)
 								</div>
 							</div>-->
 
-							<p style="text-decoration:none;text-align:justify;"><?php echo $sbody; ?></p>
-							<p style="text-decoration:none;text-align:justify;"><?php echo $lbody; ?></p>
+							<p style="text-decoration:none;"><?php echo $sbody; ?></p>
+							<p style="text-decoration:none;"><?php echo $lbody; ?></p>
 							<div class="clear"></div>
 							@endif
 							<div id="fb-root"></div>
@@ -363,7 +363,7 @@ foreach($postdetail->comments as $cmt)
 
 											</div>
 										</div>
-						<!-- 			<div class="tab-content clearfix" id="tabs-3">
+									<!-- <div class="tab-content clearfix" id="tabs-3">
 										<div id="recent-post-list-sidebar">
 
 											<div class="spost clearfix">
@@ -394,7 +394,7 @@ foreach($postdetail->comments as $cmt)
 											</div>
 
 										</div>
-									</div>
+									</div>  -->
 
 								</div>
 

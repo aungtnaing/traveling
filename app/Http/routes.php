@@ -27,6 +27,14 @@
 		Route::get('mn', 'LanguageController@changemn');
 		Route::get('en', 'LanguageController@changeen');
 
+		Route::get('sitemap', function() {
+
+			return view('pages.sitemap');
+			
+			
+			
+		});
+
 		
 
 		Route::get('/tweet/{postid}', function($postid)
@@ -480,6 +488,14 @@
 			->take(2)
 			->get();
 
+			$supplements = Posts::where('active',1)
+			->where('categoryid', 16)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(2)
+			->get();
+
+
 			
 			return view('pages.magazines')
 			->with('categorys', $categorys)
@@ -497,7 +513,8 @@
 			->with('recentposts', $recentposts)
 			->with('book', $book)
 			->with('thetalks', $thetalks)
-			->with('issue', $issue);
+			->with('issue', $issue)
+			->with('supplements', $supplements);
 			
 			
 			
@@ -1255,6 +1272,15 @@
 		Route::get('mn/thetalks/{postname}', [
 			'uses' => 'PostsController@thetalksmn'
 			]);
+
+		Route::get('specialsupplement/{postname}', [
+			'uses' => 'PostsController@supplement'
+			]);
+
+		Route::get('mn/specialsupplement/{postname}', [
+			'uses' => 'PostsController@supplementmn'
+			]);
+
 
 		Route::get('underground/{postname}', [
 			'uses' => 'PostsController@underground'

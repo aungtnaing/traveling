@@ -171,6 +171,73 @@ public function thetalks($postname)
 
 }
 
+
+/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+public function supplement($postname)
+{
+
+	
+	$postdetail = Posts::where('name','=',$postname)
+	->get();
+	$categorys = Category::orderBy('id', 'desc')->get();
+	$strfbody = "";
+	$strsbody = "";
+	$strlbody = "";
+
+	
+	
+	if(strlen($postdetail[0]->description)>650)
+	{
+
+
+		$strfbody = $this->strCutting($postdetail[0]->description, ".", 650);
+		
+
+		if(strlen($postdetail[0]->description)>1000)
+		{
+			$strsbody = $this->strCutting(substr($postdetail[0]->description, strlen($strfbody) , strlen($postdetail[0]->description)), ".", 500);
+			
+			$strlbody = substr($postdetail[0]->description, strlen($strfbody) + strlen($strsbody) , strlen($postdetail[0]->description));
+
+		}				
+	}
+	else
+	{
+
+		$strfbody = $postdetail[0]->description;
+	}
+
+	$popularposts = Posts::where('active',1)
+	->where('popular',1)
+	->where('categoryid','!=', 2)
+	->where('name','!=','')
+	->orderBy('id','DESC')
+	->take(4)
+	->get();
+
+	$recentposts = Posts::where('active',1)
+	->where('categoryid','!=', 2)
+	->where('name','!=','')
+	->orderBy('id','DESC')
+	->take(4)
+	->get();
+
+
+	return view("pages.postdetails")
+	->with('postdetail',$postdetail[0])
+	->with('categorys',$categorys)
+	->with('fbody', $strfbody)
+	->with('sbody', $strsbody)
+	->with('lbody', $strlbody)
+	->with('popularposts', $popularposts)
+	->with('recentposts', $recentposts);
+
+}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -1224,6 +1291,82 @@ public function postdetailsmyanmar($postid)
 
 
 public function thetalksmn($postname)
+{
+	
+	
+	$postdetail = Posts::where('mname','=',$postname)
+	->get();
+	$categorys = Category::orderBy('id', 'desc')->get();
+	$strfbody = "";
+	$strsbody = "";
+	$strlbody = "";
+
+	$strzbody = "";
+
+	if(strlen($postdetail[0]->zdescription)>650)
+	{
+
+		$strzbody = $this->strCutting($postdetail[0]->zdescription, "။", 650);
+		
+		
+	}
+	else
+	{
+
+		$strzbody = $postdetail[0]->zdescription;
+	}
+
+	
+	if(strlen($postdetail[0]->mdescription)>650)
+	{
+
+		$strfbody = $this->strCutting($postdetail[0]->mdescription, "။", 650);
+		
+
+		if(strlen($postdetail[0]->mdescription)>1000)
+		{
+			$strsbody = $this->strCutting(substr($postdetail[0]->mdescription, strlen($strfbody) , strlen($postdetail[0]->mdescription)), "။", 500);
+			
+			$strlbody = substr($postdetail[0]->mdescription, strlen($strfbody) + strlen($strsbody) , strlen($postdetail[0]->mdescription));
+
+		}				
+	}
+	else
+	{
+
+		$strfbody = $postdetail[0]->mdescription;
+	}
+
+	$popularposts = Posts::where('active',1)
+	->where('popular',1)
+	->where('categoryid','!=', 2)
+	->where('mname','!=','')
+	->orderBy('id','DESC')
+	->take(4)
+	->get();
+
+	$recentposts = Posts::where('active',1)
+	->where('categoryid','!=', 2)
+	->where('mname','!=','')
+	->orderBy('id','DESC')
+	->take(4)
+	->get();
+
+
+	return view("pages.postdetailsmyanmar")
+	->with('postdetail',$postdetail[0])
+	->with('categorys',$categorys)
+	->with('fbody', $strfbody)
+	->with('sbody', $strsbody)
+	->with('lbody', $strlbody)
+	->with('zbody', $strzbody)
+	->with('popularposts', $popularposts)
+	->with('recentposts', $recentposts);
+
+}	
+
+
+public function supplementmn($postname)
 {
 	
 	

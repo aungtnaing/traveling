@@ -43,7 +43,7 @@ foreach($postdetail->comments as $cmt)
 						</div>
 						<div class="entry-content notopmargin">
 							@if($postdetail->category->id!=6)
-							<p style="padding-left:60px;padding-right: 50px;text-decoration:none;text-align:justify;"><?php echo $fbody; ?></p>
+							<p style="text-decoration:none;"><?php echo $fbody; ?></p>
 							
 								<!--<div class="col_half col_last" >
 									<div class="entry1 clearfix">
@@ -56,8 +56,8 @@ foreach($postdetail->comments as $cmt)
 									</div>
 								</div>-->
 
-								<p style="padding-right:50px;text-decoration:none;text-align:justify;"><?php echo $sbody; ?></p>
-								<p style="padding-right:50px;text-decoration:none;text-align:justify;"><?php echo $lbody; ?></p>
+								<p style="text-decoration:none;"><?php echo $sbody; ?></p>
+								<p style="text-decoration:none;"><?php echo $lbody; ?></p>
 
 								<div class="clear"></div>
 								@endif
