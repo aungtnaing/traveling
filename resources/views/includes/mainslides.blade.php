@@ -8,7 +8,7 @@
 						@foreach($mainslides as $mainslide)
 						<div class="swiper-slide dark" style="background-image: url({{  $mainslide->photourl1 }});">
 							<div class="container clearfix">
-								<a href="#"><div class="slider-caption slider-caption-center">
+								<a href="{{ url('/postdetails', $mainslide->id) }}"><div class="slider-caption slider-caption-center">
 									<h2 data-caption-animate="fadeInUp">{{ $mainslide->name }}</h2>
 									<p data-caption-animate="fadeInUp" data-caption-delay="200">{{ $mainslide->subtitle }}</p>
 								</div></a>

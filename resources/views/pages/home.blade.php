@@ -7,7 +7,7 @@
 
 
 @include('includes.travelsectorupdate') 
-<!--- @include('includes.videolink') --->
+<!--- @include('includes.videolink') -->
 @include('includes.advertisment2') 
 @include('includes.specialfeatures') 
 

@@ -49,14 +49,16 @@ class PostsController extends Controller {
 
 	public function postdetails($postid)
 	{
-		
+
 		$postdetail = Posts::find($postid);
 		$categorys = Category::orderBy('id', 'desc')->get();
 		$strfbody = "";
 		$strsbody = "";
 		$strlbody = "";
 
-		
+	// 	$nameroute = strtolower(str_replace(' ', '', $postdetail->category->name));
+	// return redirect()->route('/travelsectorupdates', $postdetail->name);
+
 		if(strlen($postdetail->description)>650)
 		{
 
