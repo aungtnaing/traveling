@@ -1,4 +1,4 @@
-@extends('layouts.defaultmyanmar')
+@extends('layouts.default')
 @section('content')
 <div class="clearfix"></div>
 <section id="page-title">
@@ -15,53 +15,59 @@
 </section>
 <section id="content">
 
-			<div class="content-wrap">
+	<div class="content-wrap">
 
-				<div class="container clearfix">
+		<div class="container clearfix">
 
-					<div class="postcontent nobottommargin">
+			<div class="postcontent nobottommargin">
 
-						<div id="posts" class="events small-thumbs">
+				<div id="posts" class="events small-thumbs">
 
-						@foreach($postlists as $postlist)
-						<?php
-							$tcmt = count($postlist->comments);
-							foreach($postlist->comments as $cmt) 
-							{
-							$tcmt = $tcmt + count($cmt->replycomments);
-							}
-						?>
-							<div class="entry clearfix">
-								<div class="entry-image">
-									<a href="{{ $postlist->photourl1 }}">
-										@if($postlist->youtubelink!="")
-										<iframe width="560" height="315" src="{{ $postlist->youtubelink }}" frameborder="0" allowfullscreen></iframe>
-										@else
-										<img src="{{ $postlist->photourl2 }}" alt="Inventore voluptates velit totam ipsa tenetur">
-										@endif
-										<div class="entry-date">{{ $postlist->created_at->day }}<span>{{ $postlist->created_at->month }}</span></div>
-									</a>
-								</div>
-								<div class="entry-c">
-									<div class="entry-title">
-										<h2><a href="{{ url('/postdetailsmyanmar', $postlist->id) }}">{{ $postlist->mname }}</a></h2>
-									</div>
-									<ul class="entry-meta clearfix">
-									
-								
-										<li><i class="icon-comments"></i>{{ $tcmt }}</li>
-										<li><a href="{{ url('/postlistsmmbyauthor', $postlist->author->id) }}"><i class="icon-user"></i> {{ $postlist->author->name }}</a></li>
-									</ul>
-									<div class="entry-content">
-										<p><?php echo substr($postlist->mdescription,0, 300) ?></p>
-										<a href="{{ url('/postdetailsmyanmar', $postlist->id) }}" class="btn btn-danger">Read More</a>
-									</div>
-								</div>
+					@foreach($postlists as $postlist)
+					<?php
+					$tcmt = count($postlist->comments);
+					foreach($postlist->comments as $cmt) 
+					{
+						$tcmt = $tcmt + count($cmt->replycomments);
+					}
+					?>
+					<div class="entry clearfix">
+						<div class="entry-image">
+							<a href="{{ $postlist->photourl1 }}">
+								@if($postlist->youtubelink!="")
+								<iframe width="560" height="315" src="{{ $postlist->youtubelink }}" frameborder="0" allowfullscreen></iframe>
+								@else
+								<img src="{{ $postlist->photourl2 }}" alt="Inventore voluptates velit totam ipsa tenetur">
+								@endif
+								<div class="entry-date">{{ $postlist->created_at->day }}<span>{{ $postlist->created_at->month }}</span></div>
+							</a>
+						</div>
+						<div class="entry-c">
+							<div class="entry-title">
+								<h2><a href="{{ url('/postdetailsmyanmar', $postlist->id) }}">{{ $postlist->mname }}</a></h2>
 							</div>
-							@endforeach
+							<ul class="entry-meta clearfix">
 
+
+								<li><i class="icon-comments"></i>{{ $tcmt }}</li>
+							
+
+<li><a href="{{ url('/postlists-mn-by', $postlist->author->id) }}"><i class="icon-user"></i></a></li>
+								
+							</ul>
+
+							<div class="entry-content">
+								<p><?php echo substr($postlist->mdescription,0, 300) ?></p>
+								<a href="{{ url('/postdetailsmyanmar', $postlist->id) }}" class="btn btn-danger">Read More</a>
+							</div>
 
 						</div>
+					</div>
+					@endforeach
+
+								
+
+				</div>
 
 						<!-- Pagination
 						============================================= -->
@@ -80,7 +86,7 @@
 
 								<h4>Latest Post</h4>
 								<div id="post-list-footer">
-								@foreach($latestposts as $latestpost)
+									@foreach($latestposts as $latestpost)
 									<div class="spost clearfix">
 										<div class="entry-image">
 											<a href="{{ $latestpost->photourl1 }}" class="nobg"><img src="{{ $latestpost->photourl2 }}" alt=""></a>
@@ -94,19 +100,19 @@
 											</ul>
 										</div>
 									</div>
-								@endforeach
+									@endforeach
 
 
 								</div>
 
 							</div>
-								<div class="widget clearfix">
-									<img class="aligncenter" src="<?php echo url() ?>/images/posts/ad.png" alt="">
-								</div>
+							<div class="widget clearfix">
+								<img class="aligncenter" src="<?php echo url() ?>/images/posts/ad.png" alt="">
+							</div>
 							
 
 
-						
+
 
 						</div>
 					</div>

@@ -65,7 +65,7 @@ foreach($postdetail->comments as $cmt)
 					</div>
 
 
-<h4>Related Posts:</h4>
+					<h4>Related Posts:</h4>
 
 					<div class="related-posts clearfix">
 
@@ -210,8 +210,10 @@ foreach($postdetail->comments as $cmt)
 							<ul>
 
 								@for($i = 6; $i < count($categorys); $i++)
-
-								<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+								<?php $nameroute = strtolower(str_replace(' ', '', $category->name)); 
+										
+									?>
+								<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 
 								@endfor
 
@@ -257,65 +259,65 @@ foreach($postdetail->comments as $cmt)
 							<ul class="tab-nav clearfix">
 								<li><a href="#tabs-1">Popular</a></li>
 								<li><a href="#tabs-2">Recent</a></li>
-										 <!-- <li><a href="#tabs-3"><i class="icon-comments-alt norightmargin"></i></a></li>  -->
-									</ul>
+								<!-- <li><a href="#tabs-3"><i class="icon-comments-alt norightmargin"></i></a></li>  -->
+							</ul>
 
-									<div class="tab-container">
+							<div class="tab-container">
 
-										<div class="tab-content clearfix" id="tabs-1">
-											<div id="popular-post-list-sidebar">
+								<div class="tab-content clearfix" id="tabs-1">
+									<div id="popular-post-list-sidebar">
 
 
-												@foreach($popularposts as $popularpost)
-												<?php
-												$tcmt1 = count($popularpost->comments);
-												foreach($popularpost->comments as $cmt) 
-												{
-													$tcmt1 = $tcmt1 + count($cmt->replycomments);
-												}
-												?>
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="{{ $popularpost->photourl1 }}" class="nobg"><img class="img-circle" src="{{ $popularpost->photourl2 }}" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="{{ url('/postdetails', $popularpost->id) }}">{{ $popularpost->name }}</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li><i class="icon-comments-alt"></i>{{ $tcmt1 }}Comments</li>
-														</ul>
-													</div>
+										@foreach($popularposts as $popularpost)
+										<?php
+										$tcmt1 = count($popularpost->comments);
+										foreach($popularpost->comments as $cmt) 
+										{
+											$tcmt1 = $tcmt1 + count($cmt->replycomments);
+										}
+										?>
+										<div class="spost clearfix">
+											<div class="entry-image">
+												<a href="{{ $popularpost->photourl1 }}" class="nobg"><img class="img-circle" src="{{ $popularpost->photourl2 }}" alt=""></a>
+											</div>
+											<div class="entry-c">
+												<div class="entry-title">
+													<h4><a href="{{ url('/postdetails', $popularpost->id) }}">{{ $popularpost->name }}</a></h4>
 												</div>
-												@endforeach
-
-
-
+												<ul class="entry-meta">
+													<li><i class="icon-comments-alt"></i>{{ $tcmt1 }}Comments</li>
+												</ul>
 											</div>
 										</div>
-										<div class="tab-content clearfix" id="tabs-2">
-											<div id="recent-post-list-sidebar">
+										@endforeach
 
-												@foreach($recentposts as $recentpost)
 
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="{{ $recentpost->photourl1 }}" class="nobg"><img class="img-circle" src="{{ $recentpost->photourl2 }}" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="{{ url('/postdetails', $recentpost->id) }}">{{ $recentpost->name }}</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li>{{ $recentpost->createed_at }}</li>
-														</ul>
-													</div>
+
+									</div>
+								</div>
+								<div class="tab-content clearfix" id="tabs-2">
+									<div id="recent-post-list-sidebar">
+
+										@foreach($recentposts as $recentpost)
+
+										<div class="spost clearfix">
+											<div class="entry-image">
+												<a href="{{ $recentpost->photourl1 }}" class="nobg"><img class="img-circle" src="{{ $recentpost->photourl2 }}" alt=""></a>
+											</div>
+											<div class="entry-c">
+												<div class="entry-title">
+													<h4><a href="{{ url('/postdetails', $recentpost->id) }}">{{ $recentpost->name }}</a></h4>
 												</div>
-
-												@endforeach
-
+												<ul class="entry-meta">
+													<li>{{ $recentpost->createed_at }}</li>
+												</ul>
 											</div>
 										</div>
+
+										@endforeach
+
+									</div>
+								</div>
 						<!-- 			<div class="tab-content clearfix" id="tabs-3">
 										<div id="recent-post-list-sidebar">
 

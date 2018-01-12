@@ -50,7 +50,7 @@
 									
 								
 										<li><i class="icon-comments"></i>{{ $tcmt }}</li>
-										<li><a href="{{ url('/postlistsbyauthor', $postlist->author->id) }}"><i class="icon-user"></i> {{ $postlist->author->name }}</a></li>
+										<li><a href="{{ url('/postlists-by', $postlist->author->id) }}"><i class="icon-user"></i> {{ $postlist->author->name }}</a></li>
 									</ul>
 									<div class="entry-content">
 										<p><?php echo substr($postlist->description,0, 300) ?></p>
@@ -84,7 +84,10 @@
 										<ul>
 											@for($i = 0; $i < count($categorys); $i++)
 											@if($i < 6)
-											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+											<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
+									
+									?>
+											<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 											@endif
 											@endfor
 
@@ -95,8 +98,10 @@
 										<ul>
 
 											@for($i = 6; $i < count($categorys); $i++)
-
-											<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+											<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
+										
+									?>
+											<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 
 											@endfor
 

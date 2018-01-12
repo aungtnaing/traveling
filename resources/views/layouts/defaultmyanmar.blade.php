@@ -12,11 +12,11 @@
 
 
 
-		@include('includes.headermyanmar') 
+		@include('includes.headermagazine') 
 
 		@yield('content')
 
-		@include('includes.footermyanmar') 
+		@include('includes.footer') 
 
 		
 

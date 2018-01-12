@@ -51,58 +51,57 @@ class PostsController extends Controller {
 	{
 
 		$postdetail = Posts::find($postid);
-		$categorys = Category::orderBy('id', 'desc')->get();
-		$strfbody = "";
-		$strsbody = "";
-		$strlbody = "";
+		
 
-	// 	$nameroute = strtolower(str_replace(' ', '', $postdetail->category->name));
-	// return redirect()->route('/travelsectorupdates', $postdetail->name);
+		$nameroute = strtolower(str_replace(' ', '', $postdetail->category->name));
 
-		if(strlen($postdetail->description)>650)
-		{
-
-			$strfbody = $this->strCutting($postdetail->description, ".", 650);
-			
-
-			if(strlen($postdetail->description)>1000)
-			{
-				$strsbody = $this->strCutting(substr($postdetail->description, strlen($strfbody) , strlen($postdetail->description)), ".", 500);
-				
-				$strlbody = substr($postdetail->description, strlen($strfbody) + strlen($strsbody) , strlen($postdetail->description));
-
-			}				
-		}
-		else
-		{
-
-			$strfbody = $postdetail->description;
-		}
-
-		$popularposts = Posts::where('active',1)
-		->where('popular',1)
-		->where('categoryid','!=', 2)
-		->where('name','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
-
-		$recentposts = Posts::where('active',1)
-		->where('categoryid','!=', 2)
-		->where('name','!=','')
-		->orderBy('id','DESC')
-		->take(4)
-		->get();
+		return redirect($nameroute . '/' . $postdetail->name);
 
 
-		return view("pages.postdetails")
-		->with('postdetail',$postdetail)
-		->with('categorys',$categorys)
-		->with('fbody', $strfbody)
-		->with('sbody', $strsbody)
-		->with('lbody', $strlbody)
-		->with('popularposts', $popularposts)
-		->with('recentposts', $recentposts);
+		// if(strlen($postdetail->description)>650)
+		// {
+
+		// 	$strfbody = $this->strCutting($postdetail->description, ".", 650);
+
+
+		// 	if(strlen($postdetail->description)>1000)
+		// 	{
+		// 		$strsbody = $this->strCutting(substr($postdetail->description, strlen($strfbody) , strlen($postdetail->description)), ".", 500);
+
+		// 		$strlbody = substr($postdetail->description, strlen($strfbody) + strlen($strsbody) , strlen($postdetail->description));
+
+		// 	}				
+		// }
+		// else
+		// {
+
+		// 	$strfbody = $postdetail->description;
+		// }
+
+		// $popularposts = Posts::where('active',1)
+		// ->where('popular',1)
+		// ->where('categoryid','!=', 2)
+		// ->where('name','!=','')
+		// ->orderBy('id','DESC')
+		// ->take(4)
+		// ->get();
+
+		// $recentposts = Posts::where('active',1)
+		// ->where('categoryid','!=', 2)
+		// ->where('name','!=','')
+		// ->orderBy('id','DESC')
+		// ->take(4)
+		// ->get();
+
+
+		// return view("pages.postdetails")
+		// ->with('postdetail',$postdetail)
+		// ->with('categorys',$categorys)
+		// ->with('fbody', $strfbody)
+		// ->with('sbody', $strsbody)
+		// ->with('lbody', $strlbody)
+		// ->with('popularposts', $popularposts)
+		// ->with('recentposts', $recentposts);
 
 
 	}
@@ -525,8 +524,8 @@ public function supplement($postname)
 
 
 		$exposures = DB::table('posts')->where('active',1)
-	->where('categoryid','=', 6)
-	->where('groupname','!=', $postdetail[0]->groupname)->distinct()->get(['groupname']);
+		->where('categoryid','=', 6)
+		->where('groupname','!=', $postdetail[0]->groupname)->distinct()->get(['groupname']);
 
 		$count = count($exposures);
 		$exposure1 = "";
@@ -538,45 +537,45 @@ public function supplement($postname)
 		if($i > 0)
 		{
 			$exposure1 = Posts::where('active',1)
-	->where('categoryid','=', 6)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
+			->where('categoryid','=', 6)
+			->where('groupname','=', $exposures[$i]->groupname)			
+			->orderBy('id','DESC')
+			->take(1)
+			->get();
 		}
 
 		$i = $count - 2;
 		if($i >= 0)
 		{
 			$exposure2 = Posts::where('active',1)
-	->where('categoryid','=', 6)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
+			->where('categoryid','=', 6)
+			->where('groupname','=', $exposures[$i]->groupname)			
+			->orderBy('id','DESC')
+			->take(1)
+			->get();
 		}
 
-			$i = $count - 3;
+		$i = $count - 3;
 		if($i >= 0)
 		{
 			$exposure3 = Posts::where('active',1)
-	->where('categoryid','=', 6)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
+			->where('categoryid','=', 6)
+			->where('groupname','=', $exposures[$i]->groupname)			
+			->orderBy('id','DESC')
+			->take(1)
+			->get();
 		}
 
 
-	$i = $count - 4;
+		$i = $count - 4;
 		if($i >= 0)
 		{
 			$exposure4 = Posts::where('active',1)
-	->where('categoryid','=', 6)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
+			->where('categoryid','=', 6)
+			->where('groupname','=', $exposures[$i]->groupname)			
+			->orderBy('id','DESC')
+			->take(1)
+			->get();
 		}
 
 
@@ -639,9 +638,9 @@ public function supplement($postname)
 		->with('groupposts', $groupposts)
 		->with('exposures', $exposures)
 		->with('exposure1', $exposure1[0])
-	->with('exposure2', $exposure2[0])
-	->with('exposure3', $exposure3[0])
-	->with('exposure4', $exposure4[0]);
+		->with('exposure2', $exposure2[0])
+		->with('exposure3', $exposure3[0])
+		->with('exposure4', $exposure4[0]);
 	}
 
 
@@ -691,7 +690,7 @@ public function supplement($postname)
 		->orderBy('id','DESC')
 		->take(4)
 		->get();
-					$issue = Issues::orderBy('id','desc')->first();
+		$issue = Issues::orderBy('id','desc')->first();
 
 
 		return view("pages.picturesquelastdetail")
@@ -790,60 +789,60 @@ public function exposure($postname)
 	
 
 
-		$exposures = DB::table('posts')->where('active',1)
+	$exposures = DB::table('posts')->where('active',1)
 	->where('categoryid','=', 5)
 	->where('groupname','!=', $postdetail[0]->groupname)->distinct()->get(['groupname']);
 
-		$count = count($exposures);
-		$exposure1 = "";
-		$exposure2 = "";
-		$exposure3 = "";
-		$exposure4 = "";
+	$count = count($exposures);
+	$exposure1 = "";
+	$exposure2 = "";
+	$exposure3 = "";
+	$exposure4 = "";
 
-		$i = $count - 1;
-		if($i > 0)
-		{
-			$exposure1 = Posts::where('active',1)
-	->where('categoryid','=', 5)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
-		}
+	$i = $count - 1;
+	if($i > 0)
+	{
+		$exposure1 = Posts::where('active',1)
+		->where('categoryid','=', 5)
+		->where('groupname','=', $exposures[$i]->groupname)			
+		->orderBy('id','DESC')
+		->take(1)
+		->get();
+	}
 
-		$i = $count - 2;
-		if($i >= 0)
-		{
-			$exposure2 = Posts::where('active',1)
-	->where('categoryid','=', 5)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
-		}
+	$i = $count - 2;
+	if($i >= 0)
+	{
+		$exposure2 = Posts::where('active',1)
+		->where('categoryid','=', 5)
+		->where('groupname','=', $exposures[$i]->groupname)			
+		->orderBy('id','DESC')
+		->take(1)
+		->get();
+	}
 
-			$i = $count - 3;
-		if($i >= 0)
-		{
-			$exposure3 = Posts::where('active',1)
-	->where('categoryid','=', 5)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
-		}
+	$i = $count - 3;
+	if($i >= 0)
+	{
+		$exposure3 = Posts::where('active',1)
+		->where('categoryid','=', 5)
+		->where('groupname','=', $exposures[$i]->groupname)			
+		->orderBy('id','DESC')
+		->take(1)
+		->get();
+	}
 
 
 	$i = $count - 4;
-		if($i >= 0)
-		{
-			$exposure4 = Posts::where('active',1)
-	->where('categoryid','=', 5)
-	->where('groupname','=', $exposures[$i]->groupname)			
-	->orderBy('id','DESC')
-	->take(1)
-	->get();
-		}
+	if($i >= 0)
+	{
+		$exposure4 = Posts::where('active',1)
+		->where('categoryid','=', 5)
+		->where('groupname','=', $exposures[$i]->groupname)			
+		->orderBy('id','DESC')
+		->take(1)
+		->get();
+	}
 
 
 
@@ -1220,74 +1219,81 @@ public function arrival($postname)
 
 public function postdetailsmyanmar($postid)
 {
-	
 	$postdetail = Posts::find($postid);
-	$categorys = Category::orderBy('id', 'desc')->get();
-	$strfbody = "";
-	$strsbody = "";
-	$strlbody = "";
 
-	$strzbody = "";
 
-	if(strlen($postdetail->zdescription)>650)
-	{
+	$nameroute = strtolower(str_replace(' ', '', $postdetail->category->name));
 
-		$strzbody = $this->strCutting($postdetail->zdescription, "။", 650);
-		
-		
-	}
-	else
-	{
+	return redirect('mn/' . $nameroute . '/' . $postdetail->mname);
 
-		$strzbody = $postdetail->zdescription;
-	}
+
+	// $postdetail = Posts::find($postid);
+	// $categorys = Category::orderBy('id', 'desc')->get();
+	// $strfbody = "";
+	// $strsbody = "";
+	// $strlbody = "";
+
+	// $strzbody = "";
+
+	// if(strlen($postdetail->zdescription)>650)
+	// {
+
+	// 	$strzbody = $this->strCutting($postdetail->zdescription, "။", 650);
+
+
+	// }
+	// else
+	// {
+
+	// 	$strzbody = $postdetail->zdescription;
+	// }
 
 	
-	if(strlen($postdetail->mdescription)>650)
-	{
+	// if(strlen($postdetail->mdescription)>650)
+	// {
 
-		$strfbody = $this->strCutting($postdetail->mdescription, "။", 650);
-		
-
-		if(strlen($postdetail->mdescription)>1000)
-		{
-			$strsbody = $this->strCutting(substr($postdetail->mdescription, strlen($strfbody) , strlen($postdetail->mdescription)), "။", 500);
-			
-			$strlbody = substr($postdetail->mdescription, strlen($strfbody) + strlen($strsbody) , strlen($postdetail->mdescription));
-
-		}				
-	}
-	else
-	{
-
-		$strfbody = $postdetail->mdescription;
-	}
-
-	$popularposts = Posts::where('active',1)
-	->where('popular',1)
-	->where('categoryid','!=', 2)
-	->where('mname','!=','')
-	->orderBy('id','DESC')
-	->take(4)
-	->get();
-
-	$recentposts = Posts::where('active',1)
-	->where('categoryid','!=', 2)
-	->where('mname','!=','')
-	->orderBy('id','DESC')
-	->take(4)
-	->get();
+	// 	$strfbody = $this->strCutting($postdetail->mdescription, "။", 650);
 
 
-	return view("pages.postdetailsmyanmar")
-	->with('postdetail',$postdetail)
-	->with('categorys',$categorys)
-	->with('fbody', $strfbody)
-	->with('sbody', $strsbody)
-	->with('lbody', $strlbody)
-	->with('zbody', $strzbody)
-	->with('popularposts', $popularposts)
-	->with('recentposts', $recentposts);
+	// 	if(strlen($postdetail->mdescription)>1000)
+	// 	{
+	// 		$strsbody = $this->strCutting(substr($postdetail->mdescription, strlen($strfbody) , strlen($postdetail->mdescription)), "။", 500);
+
+	// 		$strlbody = substr($postdetail->mdescription, strlen($strfbody) + strlen($strsbody) , strlen($postdetail->mdescription));
+
+	// 	}				
+	// }
+	// else
+	// {
+
+	// 	$strfbody = $postdetail->mdescription;
+	// }
+
+	// $popularposts = Posts::where('active',1)
+	// ->where('popular',1)
+	// ->where('categoryid','!=', 2)
+	// ->where('mname','!=','')
+	// ->orderBy('id','DESC')
+	// ->take(4)
+	// ->get();
+
+	// $recentposts = Posts::where('active',1)
+	// ->where('categoryid','!=', 2)
+	// ->where('mname','!=','')
+	// ->orderBy('id','DESC')
+	// ->take(4)
+	// ->get();
+
+
+	// return view("pages.postdetailsmyanmar")
+	// ->with('postdetail',$postdetail)
+	// ->with('categorys',$categorys)
+	// ->with('fbody', $strfbody)
+	// ->with('sbody', $strsbody)
+	// ->with('lbody', $strlbody)
+	// ->with('zbody', $strzbody)
+	// ->with('popularposts', $popularposts)
+	// ->with('recentposts', $recentposts);
 
 }
 
@@ -2134,7 +2140,7 @@ public function snapshotsmn($postname)
 		$authors = Authors::orderBy('id', 'desc')->get();
 
 		return view("dashboard.posts.postcreate")->with('categorys', $categorys)
-		                                         ->with('authors', $authors);
+		->with('authors', $authors);
 
 	}
 	
@@ -2359,10 +2365,10 @@ public function snapshotsmn($postname)
 
 		$authors = Authors::orderBy('id', 'desc')->get();
 
-		                                        
+
 
 		return view('dashboard.posts.postedit')->with('post', $post)->with('categorys',$categorys)
-																	->with('authors', $authors);
+		->with('authors', $authors);
 	}
 
 	/**
@@ -2454,7 +2460,7 @@ public function snapshotsmn($postname)
 				$post->description = $request->input("description");
 				
 				$post->categoryid = $request->input("category");
-						$post->authorid = $request->input("author");
+				$post->authorid = $request->input("author");
 
 				$post->created_at = $request->input("created_at");
 

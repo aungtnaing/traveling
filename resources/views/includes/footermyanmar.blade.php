@@ -36,7 +36,10 @@
 								<h4>Catagories</h4>
 								<ul>
 									@foreach($categorys as $category)
-									<li><a href="{{ url('/postlists', $category->id) }}">{{ $category->name }}</a></li>
+									<?php $nameroute = strtolower(str_replace(' ', '', $category->name)); 
+										
+									?>
+									<li><a href="{{ $nameroute }}">{{ $category->name }}</a></li>
 									
 									@endforeach
 								</ul>

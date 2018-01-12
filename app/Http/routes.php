@@ -103,13 +103,7 @@
 			
 		});
 
-		// 	Route::get('test', function() {
-
-			
-		// 	return view('pages.test');
-			
-			
-		// });
+		
 
 		Route::get('travelbiz', function() {
 
@@ -307,7 +301,7 @@
 			
 		}]);
 
-		Route::get('postlistsbyauthor/{authorid}', ['as' => 'postlistsbyauthor', function ($authorid) {
+		Route::get('postlists-by/{authorid}', ['as' => 'postlistsby', function ($authorid) {
 			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
@@ -330,7 +324,7 @@
 			
 			
 		}]);
-		Route::get('postlistsmmbyauthor/{authorid}', ['as' => 'postlistsbyauthor', function ($authorid) {
+		Route::get('postlists-mn-by/{authorid}', ['as' => 'postlistsmnby', function ($authorid) {
 			$categorys = Category::All();
 
 			$postlists = Posts::where('active',1)
@@ -595,6 +589,106 @@
 			
 		});
 
+		Route::get('thetalk', function() {
+
+			$categorys = Category::All();
+
+			$postlists = Posts::where('active',1)
+			->where('categoryid', 14)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->paginate(4);
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 14)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+			
+			return view('pages.postlists')
+			->with('postlists', $postlists)
+			->with('categorys', $categorys)
+			->with('latestposts', $recentposts);
+			
+		});
+
+		Route::get('mn/thetalk', function() {
+
+			$categorys = Category::All();
+
+			$postlists = Posts::where('active',1)
+			->where('categoryid', 14)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->paginate(4);
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 14)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+			
+			return view('pages.postlistsmyanmar')
+			->with('postlists', $postlists)
+			->with('categorys', $categorys)
+			->with('latestposts', $recentposts);
+			
+		});
+
+
+
+		Route::get('specialsupplement', function() {
+
+			$categorys = Category::All();
+
+			$postlists = Posts::where('active',1)
+			->where('categoryid', 16)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->paginate(4);
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 16)
+			->where('name','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+			
+			return view('pages.postlists')
+			->with('postlists', $postlists)
+			->with('categorys', $categorys)
+			->with('latestposts', $recentposts);
+			
+		});
+
+		Route::get('mn/specialsupplement', function() {
+
+			$categorys = Category::All();
+
+			$postlists = Posts::where('active',1)
+			->where('categoryid', 16)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->paginate(4);
+
+			$recentposts = Posts::where('active',1)
+			->where('categoryid','!=', 16)
+			->where('mname','!=','')
+			->orderBy('id','DESC')
+			->take(4)
+			->get();
+			
+			return view('pages.postlistsmyanmar')
+			->with('postlists', $postlists)
+			->with('categorys', $categorys)
+			->with('latestposts', $recentposts);
+			
+		});
+
+
+
 		Route::get('mn/exposure', function() {
 
 			$categorys = Category::All();
@@ -703,12 +797,14 @@
 			->paginate(4);
 
 			$recentposts = Posts::where('active',1)
-			->where('categoryid','!=', 2)
+			->where('categoryid','!=', 9)
 			->where('mname','!=','')
 			->orderBy('id','DESC')
 			->take(4)
 			->get();
 			
+			// echo count($postlists);
+			// die();
 			return view('pages.postlistsmyanmar')
 			->with('postlists', $postlists)
 			->with('categorys', $categorys)

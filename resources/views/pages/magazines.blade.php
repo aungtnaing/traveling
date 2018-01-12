@@ -127,7 +127,7 @@
 					<div class="widget clearfix">
 
 						<div id="post-list-footer">
-							<h4>The Talk</h4>
+							<a href="{{ url('/thetalk') }}"><h4>The Talk</h4></a>
 
 							@foreach($thetalks as $thetalk)
 
@@ -148,8 +148,8 @@
 
 							@endforeach
 					<div class="widget clearfix"> </div>
-
-							<h4>Special Supplement</h4>
+						<a href="{{ url('/specialsupplement') }}"><h4>Special Supplement</h4></a>
+							
 
 							@foreach($supplements as $supplement)
 
@@ -177,7 +177,10 @@
 									<ul>
 										@for($i = 0; $i < count($categorys); $i++)
 										@if($i < 6)
-										<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+										<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
+										
+									?>
+										<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 										@endif
 										@endfor
 
@@ -188,8 +191,10 @@
 									<ul>
 
 										@for($i = 6; $i < count($categorys); $i++)
-
-										<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+										<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
+										
+									?>
+										<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 
 										@endfor
 

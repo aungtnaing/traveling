@@ -175,14 +175,16 @@
 						@foreach($whatnews as $whatnew)
 						<div class="ievent clearfix">
 							<div class="entry-image">
-								<a href="#">
+								<a href="{{ $whatnew->photourl1 }}">
 									<img src="<?php echo url(); ?>{{ $whatnew->photourl1 }}" alt="Inventore voluptates velit totam ipsa">
 
 								</a>
 							</div>
 							<div class="entry-c">
 								<div class="entry-title">
-									<h2><a href="{{ $whatnew->websiteurl }}">I{{ $whatnew->businessname }}</a></h2>
+
+
+									<h2><a href="{{ $whatnew->websiteurl }}" >{{ $whatnew->businessname }}</a></h2> 
 								</div>
 								<ul class="entry-meta clearfix">
 									<li><a href="{{ $whatnew->websiteurl }}"><i class="icon-globe"></i>{{ $whatnew->websiteurl }}</a></li>
