@@ -14,6 +14,7 @@ use Mail;
 
 use File;
 use Input;
+use App\Issues;
 
 
 class PictureuploadsController extends Controller {
@@ -26,7 +27,7 @@ class PictureuploadsController extends Controller {
 	public function index(Request $request)
 	{
 		$pictures = Pictures::All();
-		
+
 		return view("dashboard.pictures.picturesquespannel")
 		->with('pictures', $pictures);
 		
@@ -83,7 +84,7 @@ class PictureuploadsController extends Controller {
 		$directory = $lastid;
 		$input = $request->all();
 		$destinationPath = $imagePath . $directory . '/photos';
-		
+
 		$photourl1 = "";
 		
 		
@@ -112,45 +113,45 @@ class PictureuploadsController extends Controller {
 
 		}
 
-		
+
 
 		$picture->photourl1 = $photourl1;
-		
+
 
 		$picture->userid = $request->user()->id;	
 
-		
+
 		$picture->name = $request->input("name");
 		$picture->email = $request->input("email");
 		$picture->phone = $request->input("phone");
 		$picture->subject = $request->input("subject");
 		$picture->message = $request->input("message");
-		$picture->issueid = DB::table('issue')->select('id')->orderBy('id', 'DESC')->first();
+		$picture->issueid = DB::table('issues')->select('id')->orderBy('id', 'DESC')->first();
 
 		$picture->newpic = 1;
 		
-		
+
 
 		$picture->save();
 		$categorys = Category::All();
-		
-		// $data = array(
-		// 	'name' => $request->input("name"),
-		// 	'email' => $request->input("email"),
-		// 	'messagecontent' => $request->input("message"),
-		// 	);
+
+		$data = array(
+			'name' => $request->input("name"),
+			'email' => $request->input("email"),
+			'messagecontent' => $request->input("message"),
+			);
 
 
-		// Mail::send('emails.layoutmail', $data, function ($message) use ($data){
+		Mail::send('emails.layoutmail', $data, function ($message) use ($data){
 
 
 
-		// 	$message->from('picturesquenoreply@gmail.com', $data['email']);
+			$message->from('picturesquenoreply@gmail.com', $data['email']);
 
-		// 	$message->to($request->input("email"))->subject('Thanks you for your submitting.')
-		// 	->replyTo($data['email']);
+			$message->to($request->input("email"))->subject('Thanks you for your submitting.')
+			->replyTo($data['email']);
 
-		// });
+		});
 
 
 		return view('pages.acknoledgeform')->with('categorys', $categorys);
@@ -180,7 +181,7 @@ class PictureuploadsController extends Controller {
 		$picture = Pictures::find($id);
 
 		return view('dashboard.pictures.pictureedit')->with('picture',$picture);
-		
+
 	}
 
 	/**
@@ -201,13 +202,13 @@ class PictureuploadsController extends Controller {
 		if (Input::get('newpic') === ""){$picture->newpic = 1;}
 
 		
-		
+
 		
 		
 		$picture->save();
 		
 		return redirect()->route("picturesques.index");
-		
+
 	}
 
 	/**
