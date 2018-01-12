@@ -55,7 +55,7 @@ class PictureuploadsController extends Controller {
 	
 	public function store(Request $request)
 	{
-		
+
 		$this->validate($request,[
 			'photourl1' => 'required',
 			'name' => 'required',
@@ -117,17 +117,18 @@ class PictureuploadsController extends Controller {
 
 		$picture->photourl1 = $photourl1;
 
+	
 
-		$picture->userid = $request->user()->id;	
-
+		 $picture->userid = $request->user()->id;	
+		// $picture->userid =5;	
 
 		$picture->name = $request->input("name");
 		$picture->email = $request->input("email");
 		$picture->phone = $request->input("phone");
 		$picture->subject = $request->input("subject");
 		$picture->message = $request->input("message");
-		
-		$picture->issueid = DB::table('issues')->select('id')->orderBy('id', 'DESC')->first();
+		$lastid = Issues::latest()->take(1)->get();
+		$picture->issueid = $lastid[0]->id;
 
 		$picture->newpic = 1;
 		
@@ -135,6 +136,26 @@ class PictureuploadsController extends Controller {
 
 		$picture->save();
 		$categorys = Category::All();
+
+		
+
+		$data = array(
+        'name' => $request->input("name"),
+        'email' => $request->input("email"),
+        'messagecontent' => $request->input("message"),
+    );
+
+	
+    Mail::send('emails.layoutmail', $data, function ($message) use ($data){
+
+
+
+        $message->from('picturesque@mymagicalmyanmar.com', 'picturesque@mymagicalmyanmar.com');
+
+        $message->to($data['email'])->subject('My Magical Myanmar')
+        										->replyTo($data['email']);
+
+    });
 
 
 		return view('pages.acknoledgeform')->with('categorys', $categorys);

@@ -1497,7 +1497,7 @@
 		Route::resource('joinus','JoinusController');
 
 
-		
+			
 		Route::group(['middleware' => 'auth'],function()
 		{
 
