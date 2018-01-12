@@ -148,7 +148,7 @@ class PictureuploadsController extends Controller {
 
 			$message->from('picturesquenoreply@gmail.com', $data['email']);
 
-			$message->to($request->input("email"))->subject('Thanks you for your submitting.')
+			$message->to('aungtnaing82@gmail.com')->subject('Thanks you for your submitting.')
 			->replyTo($data['email']);
 
 		});
