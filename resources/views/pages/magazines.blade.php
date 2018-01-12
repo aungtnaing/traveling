@@ -180,7 +180,7 @@
 										<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
 										
 									?>
-										<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
+										<li><a href="<?php echo url(); ?>/{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 										@endif
 										@endfor
 
@@ -194,7 +194,7 @@
 										<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
 										
 									?>
-										<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
+										<li><a href="<?php echo url(); ?>/{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 
 										@endfor
 

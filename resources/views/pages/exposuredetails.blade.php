@@ -199,7 +199,10 @@ foreach($postdetail->comments as $cmt)
 							<ul>
 								@for($i = 0; $i < count($categorys); $i++)
 								@if($i < 6)
-								<li><a href="{{ url('/postlists', $categorys[$i]->id) }}">{{ $categorys[$i]->name }}</a></li>
+								<?php $nameroute = strtolower(str_replace(' ', '', $categorys[$i]->name)); 
+										
+									?>
+								<li><a href="<?php echo url(); ?>/{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 								@endif
 								@endfor
 
@@ -213,7 +216,7 @@ foreach($postdetail->comments as $cmt)
 								<?php $nameroute = strtolower(str_replace(' ', '', $category->name)); 
 										
 									?>
-								<li><a href="{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
+								<li><a href="<?php echo url(); ?>/{{ $nameroute }}">{{ $categorys[$i]->name }}</a></li>
 
 								@endfor
 
