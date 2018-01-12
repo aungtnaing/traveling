@@ -6,7 +6,7 @@
 			<div class="section topmargin nobottommargin nobottomborder">
 				<div class="container clearfix">
 					<div class="heading-block center nomargin">
-						<h3><a href="{{ url('/postlists', 1) }}">Travel Sector Update</a></h3>
+						<h3><a href="{{ url('/travelsectorupdates') }}">Travel Sector Update</a></h3>
 					</div>
 				</div>
 			</div>

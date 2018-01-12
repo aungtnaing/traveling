@@ -28,7 +28,7 @@
 				@endif
 
 				@if($postdetail->mname=='')
-					<li><a href="<?php echo url(); ?>/mn" class="not-active"><img src="<?php echo url();  ?>/images/myan1.png"></a></li>
+					<li><a href="#" class="not-active"><img src="<?php echo url();  ?>/images/myan2.png"></a></li>
 				@else
 				  	<?php $nameroute = strtolower(str_replace(' ', '', $postdetail->category->name)); 			$nameroute = "mn/" . $nameroute;
 				?>
