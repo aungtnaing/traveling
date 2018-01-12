@@ -150,7 +150,7 @@ class PictureuploadsController extends Controller {
 
 
 
-        $message->from('picturesque@mymagicalmyanmar.com', 'picturesque@mymagicalmyanmar.com');
+        $message->from('picturesque@mymagicalmyanmar.com', 'My Magical Myanmar');
 
         $message->to($data['email'])->subject('My Magical Myanmar | Picturesque compilation')
         										->replyTo($data['email']);
