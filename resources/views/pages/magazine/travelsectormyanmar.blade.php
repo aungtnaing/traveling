@@ -20,11 +20,11 @@
 		</div>
 		<div class="col_half bottommargin-sm col_last">
 			<div class="entry-title">
-				<h3><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[0]->mname) }}">{{ $travelsectorposts[0]->mname }}</a></h3>
+				<h3><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[0]->mname) }}">{{ $travelsectorposts[0]->mname }}</a></h3>
 			</div>
 			<ul class="entry-meta clearfix">
 				<li><i class="icon-calendar3"></i>{{ $travelsectorposts[0]->created_at }}</li>
-				<li><a href="{{ url('//mn/travelsectorupdate', $travelsectorposts[0]->mname) }}"><i class="icon-comments"></i>{{ $tcmt }}</a></li>
+				<li><a href="{{ url('//mn/travelsectorupdates', $travelsectorposts[0]->mname) }}"><i class="icon-comments"></i>{{ $tcmt }}</a></li>
 				<li><a href="{{ $travelsectorposts[0]->photourl1 }}"><i class="icon-camera-retro"></i></a></li>
 			</ul>
 			<div class="entry-content">
@@ -52,11 +52,11 @@
 			</div>
 			<div class="entry-c">
 				<div class="entry-title">
-					<h4><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[1]->mname) }}">{{ $travelsectorposts[1]->mname }}</a></h4>
+					<h4><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[1]->mname) }}">{{ $travelsectorposts[1]->mname }}</a></h4>
 				</div>
 				<ul class="entry-meta">
 					<li><i class="icon-calendar3"></i>{{ $travelsectorposts[1]->created_at }}</li>
-					<li><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[1]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
+					<li><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[1]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -78,11 +78,11 @@
 			</div>
 			<div class="entry-c">
 				<div class="entry-title">
-					<h4><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[2]->mname) }}">{{ $travelsectorposts[2]->mname }}</a></h4>
+					<h4><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[2]->mname) }}">{{ $travelsectorposts[2]->mname }}</a></h4>
 				</div>
 				<ul class="entry-meta">
 					<li><i class="icon-calendar3"></i>{{ $travelsectorposts[2]->created_at }}</li>
-					<li><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[2]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
+					<li><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[2]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -111,11 +111,11 @@
 			</div>
 			<div class="entry-c">
 				<div class="entry-title">
-					<h4><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[3]->mname) }}">{{ $travelsectorposts[3]->mname }}</a></h4>
+					<h4><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[3]->mname) }}">{{ $travelsectorposts[3]->mname }}</a></h4>
 				</div>
 				<ul class="entry-meta">
 					<li><i class="icon-calendar3"></i>{{ $travelsectorposts[3]->created_at }}</li>
-					<li><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[3]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
+					<li><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[3]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -138,11 +138,11 @@
 			</div>
 			<div class="entry-c">
 				<div class="entry-title">
-					<h4><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[4]->mname) }}">{{ $travelsectorposts[4]->mname }}</a></h4>
+					<h4><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[4]->mname) }}">{{ $travelsectorposts[4]->mname }}</a></h4>
 				</div>
 				<ul class="entry-meta">
 					<li><i class="icon-calendar3"></i>{{ $travelsectorposts[4]->created_at }}</li>
-					<li><a href="{{ url('/mn/travelsectorupdate', $travelsectorposts[4]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
+					<li><a href="{{ url('/mn/travelsectorupdates', $travelsectorposts[4]->mname) }}"><i class="icon-comments"></i> {{ $tcmt }}</a></li>
 				</ul>
 			</div>
 		</div>

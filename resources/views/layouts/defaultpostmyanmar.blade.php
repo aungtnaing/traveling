@@ -130,7 +130,7 @@
 
 
 
-		@include('includes.headermagazine') 
+		@include('includes.headerpost') 
 
 		@yield('content')
 

@@ -1445,7 +1445,7 @@
 			]);
 
 
-		Route::get('mn/travelsectorupdate/{postname}', [
+		Route::get('mn/travelsectorupdates/{postname}', [
 			'uses' => 'PostsController@travelsectorupdatemn'
 			]);
 
