@@ -10,6 +10,7 @@ use DB;
 use App\Category;
 use App\Pictures;
 
+use Mail;
 
 use File;
 use Input;
@@ -132,8 +133,26 @@ class PictureuploadsController extends Controller {
 
 		$picture->save();
 		$categorys = Category::All();
-			// echo "erwror";
-			// 		die();
+			
+		$data = array(
+        'name' => $request->input("name"),
+        'email' => $request->input("email"),
+        'messagecontent' => $request->input("message"),
+    );
+
+
+			 Mail::send('emails.layoutmail', $data, function ($message) use ($data){
+
+
+
+        $message->from('picturesquenoreply@gmail.com', $data['email']);
+
+        $message->to($request->input("email"))->subject('Thanks you for your submitting.')
+        										->replyTo($data['email']);
+
+    });
+
+
 		return view('pages.acknoledgeform')->with('categorys', $categorys);
 	}
 
