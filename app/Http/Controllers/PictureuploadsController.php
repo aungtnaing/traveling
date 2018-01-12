@@ -136,22 +136,21 @@ class PictureuploadsController extends Controller {
 		$categorys = Category::All();
 
 		$data = array(
-			'name' => $request->input("name"),
-			'email' => $request->input("email"),
-			'messagecontent' => $request->input("message"),
-			);
+        'name' => $request->input("name"),
+        'email' => $request->input("email"),
+        'messagecontent' => $request->input("messagecontent"),
+    );
+
+	
+    Mail::send('emails.layoutmail', $data, function ($message) use ($data){
 
 
-		Mail::send('emails.layoutmail', $data, function ($message) use ($data){
 
+        $message->from('picturesquenoreply@gmail.com', $data['email']);
 
+        $message->to('aungtnaing82@gmail.com')->subject('New Client Enquiry')->replyTo($data['email']);
 
-			$message->from('picturesquenoreply@gmail.com', $data['email']);
-
-			$message->to('aungtnaing82@gmail.com')->subject('Thanks you for your submitting.')
-			->replyTo($data['email']);
-
-		});
+    });
 
 
 		return view('pages.acknoledgeform')->with('categorys', $categorys);
