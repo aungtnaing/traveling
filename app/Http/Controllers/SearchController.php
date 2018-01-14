@@ -41,6 +41,7 @@ class SearchController extends Controller {
 	{
 		$postlists = Posts::Where('name', $request->input("info"))
 							->orWhere('name', 'like', '%' . $request->input("info") . '%')
+							->Where('active',1)
 							->orderBy('id','DESC')			
 							->paginate(4);
 
