@@ -183,7 +183,20 @@
 							</div>
 
 						</div>
+						<div class="widget widget-twitter-feed clearfix">
 
+							<h4>Twitter Feed</h4>
+
+								 <a height="350" class="twitter-timeline" href="https://twitter.com/magicalmyanmar?ref_src=twsrc%5Etfw">Tweets by magicalmyanmar</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+   <a href="https://twitter.com/magicalmyanmar?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @magicalmyanmar</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							<!-- <ul class="iconlist twitter-feed" data-username="envato" data-count="2">
+								<li></li>
+							</ul>
+
+							<a href="#" class="btn btn-default btn-sm fright">Follow Us on Twitter</a> -->
+
+						</div>
 
 						<div class="widget clearfix">
 							<img class="aligncenter" src="images/magazine/ad.png" alt="">

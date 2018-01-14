@@ -147,7 +147,7 @@ foreach($postdetail->comments as $cmt)
 											</div>
 										</div>
 										<div class="comment-content clearfix">
-											<div class="comment-author"><a href='{{ url('/authorprofile', $comment->user->id) }}' rel='external nofollow' class='url'>{{ $comment->user->name }}</a><span>{{ $comment->created_at }}</span></div>
+											<div class="comment-author"><a href='{{ twitterurl('/authorprofile', $comment->user->id) }}' rel='external nofollow' class='url'>{{ $comment->user->name }}</a><span>{{ $comment->created_at }}</span></div>
 											<a class='comment-reply-link' href='javascript:replyon({{ $comment->id }})'><i class="icon-reply"></i></a>
 											<p>{{ $comment->comment }}						
 											</p>

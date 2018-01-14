@@ -35,23 +35,25 @@
 			
 		});
 
+		Route::get('/homeTimeline', function()
+		{
+			$categorys = Category::All();
+
+		
+
+			// $tweets = Twitter::getUserTimeline(['screen_name' => '@magicalmyanmar', 'count' => 20, 'format' => 'json']);
+
+			
+
+
+			return view('pages.tweet')->with('categorys', $categorys);
+		});
 		
 
 		Route::get('/tweet/{postid}', function($postid)
 		{
-
-
 			$post = Posts::find($postid);
-			
-
-			// $postname = str_replace(' ', '%', $post->name);
-			// $catname = strtolower(str_replace(' ', '', $post->category->name));
-		
-
-			// $desc = "http://www.mymagicalmyanmar.com/" . $catname . "/" . $postname;
-
-			// $desc = $post->name;
-			// $desc = "<a href=mymagicalmyanmar.com/postdetails/". $post->id . "></a>";
+	
 			$desc = $post->name . "    ";
 			$desc.= "mymagicalmyanmar.com/postdetails/". $post->id;
 
@@ -65,10 +67,6 @@
 
 		Route::get('/tweetmn/{postid}', function($postid)
 		{
-
-
-
-
 			$post = Posts::find($postid);
 
 			$desc = $post->mname . "    ";
