@@ -1360,6 +1360,9 @@
 			
 		});
 
+		Route::get('searchs', [
+			'uses' => 'SearchController@searching'
+			]);
 
 		Route::get('thetalk/{postname}', [
 			'uses' => 'PostsController@thetalks'

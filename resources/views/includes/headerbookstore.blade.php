@@ -112,10 +112,7 @@
 					<div id="logo">
 						<a href="/" class="standard-logo" data-dark-logo="<?php echo url(); ?>/images/logo1.png"><img src="<?php echo url(); ?>/images/logo3.png" alt="Canvas Logo"></a>
 						<a href="/" class="retina-logo" data-dark-logo="<?php echo url(); ?>/images/logo2.png"><img src="<?php echo url(); ?>/images/logo@2x.png" alt="mymagicalmyanmar"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
+					</div>
 					<nav id="primary-menu" class="dark">
 
 						<ul>
@@ -125,20 +122,14 @@
 							<li><a href="<?php echo url(); ?>/magazine"><div>Magazine</div></a>
 								
 							</li>
-							<!--- <li><a href="<?php echo url(); ?>/booking"><div>Booking</div></a>
-								
-							</li> --->
+							
 							<li><a href="<?php echo url(); ?>/joinus"><div>Join Us</div></a>
 								
 							</li>
 						</ul>
 						
 
-						<!-- Top Search
-						============================================= -->
 						
-											<!-- Top Cart
-						============================================= -->
 						<div id="top-cart">
 							<a href="{{ url('/checkouts') }}" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span><?php echo count($orderbooks); ?></span></a>
 							<div class="top-cart-content">
@@ -177,15 +168,15 @@
 						</div><!-- #top-cart end -->
 						<div id="top-search">
 							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+							<form action="{{ url('/searchs') }}" method="get">
+								<input type="text" name="info" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
 							</form>
-						</div><!-- #top-search end -->
+						</div>
 
-					</nav><!-- #primary-menu end -->
+					</nav>
 
 				</div>
 
 			</div>
 
-		</header><!-- #header end -->
+		</header>

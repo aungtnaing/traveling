@@ -2,7 +2,7 @@
 	<div class="section notopmargin notopborder">
 		<div class="container clearfix">
 			<div class="heading-block center nomargin">
-				<h3>Latest from the Blog</h3>
+				<h3>LATEST ARTICLE</h3>
 			</div>
 		</div>
 	</div>
